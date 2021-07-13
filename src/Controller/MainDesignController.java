@@ -11,7 +11,6 @@ import javafx.scene.layout.Pane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static java.sql.Types.NULL;
 
 public class MainDesignController implements Initializable
 {
@@ -29,6 +28,7 @@ public class MainDesignController implements Initializable
 
     int ValueOne=1,ValueTwo=2,ValueThree=3,ValueFour=4,ValueFive=5,ValueSix=6,ValueSeven=7,ValueEight=8,ValueNine=9,ValueZero=0;
     String ValueZeroZero="00",ValueFull_Stop=".",ValueMulti="x",ValuePlus="+",ValueSubtraction="-",ValueEqual="=",ValueSlash="/",ValuePercent="%",ValueX="x",ValueAC= "";
+    char lastValue;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -62,7 +62,6 @@ public class MainDesignController implements Initializable
     {
         if(actionEventForCB.getSource()==one)
         {
-
             PrintMethod(ValueOne,"Emran");
         }
         else if(actionEventForCB.getSource()==two)
@@ -139,11 +138,19 @@ public class MainDesignController implements Initializable
         }
 
         ////
-        char lastValue=userValue.getText().charAt(userValue.getText().length() - 1); //
+        try {
+            lastValue=userValue.getText().charAt(userValue.getText().length() - 1); //
+        }catch (Exception e)
+        {
+            System.out.println("Error E2H");
+            return;
+        }
+
+        System.out.println(lastValue);
         if(lastValue=='+' || lastValue=='-' || lastValue=='x' || lastValue=='/')
         {
+            System.out.println(userValue.getText().length());
             String RemoveValue=removeLastChar(userValue.getText());
-            //PrintMethod(-1,ValueX);
             userValue.setText(RemoveValue);
 
             if(actionEventForCB.getSource()==multi)
@@ -264,7 +271,14 @@ public class MainDesignController implements Initializable
             return;
         }
 
-        char lastValue=userValue.getText().charAt(userValue.getText().length() - 1); //
+        try {
+            lastValue=userValue.getText().charAt(userValue.getText().length() - 1); //
+        }catch (Exception e)
+        {
+            System.out.println("Error E2H");
+            return;
+        }
+
         if(lastValue=='+' || lastValue=='-' || lastValue=='x' || lastValue=='/')
         {
             String RemoveValue=removeLastChar(userValue.getText());
