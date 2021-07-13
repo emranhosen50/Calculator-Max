@@ -1,7 +1,52 @@
+#one,#two,#three,#four,#five,#six,#seven,#eight,#nine,#zero,#zero_zero,#full_stop
+{
+    -fx-text-fill:#FF6600;
+    text-align: center;
+
+    -fx-effect: dropshadow(gaussian, #CBCBCB, 10, 0.4, 3.4, 3.4);
+    -fx-font-size:15px;
+    -fx-background-color:#F5F5F5;
+
+    -fx-padding: 8 8 8 8;
+}
+#one:hover,#two:hover,#three:hover,#four:hover,#five:hover,#six:hover,#seven:hover,#eight:hover,#nine:hover,#zero:hover,#zero_zero:hover,#full_stop:hover
+{
+    -fx-background-color : #D8D8D8;
+}
+#one:pressed,#two:pressed,#three:pressed,#four:pressed,#five:pressed,#six:pressed,#seven:pressed,#eight:pressed,#nine:pressed,#zero:pressed,#zero_zero:pressed,#full_stop:pressed
+{
+    -fx-background-color : #727272;
+}
+
+
+
+
+#multi,#plus,#subtraction,#equal,#slash,#percent,#x,#ac
+{
+    -fx-text-fill:#FFFFFF;
+    text-align: center;
+
+    -fx-effect: dropshadow(gaussian, #CBCBCB, 10, 0.4, 3.4, 3.4);
+    -fx-font-size:15px;
+    -fx-background-color:#FF6600;
+
+    -fx-padding: 8 8 8 8;
+}
+#multi:hover,#plus:hover,#subtraction:hover,#equal:hover,#slash:hover,#percent:hover,#x:hover,#ac:hover
+{
+    -fx-background-color : #CB331B;
+}
+#multi:pressed,#plus:pressed,#subtraction:pressed,#equal:pressed,#slash:pressed,#percent:pressed,#x:pressed,#ac:pressed
+{
+    -fx-background-color : #8A2314;
+}
+
+
 .button
 {
-    -fx-font-size:16px;
+    -fx-font-size:13px;
     -fx-text-fill:#ffffff;
+    text-align: center;
     -fx-font-weight:bold;
     -fx-background-color: #1B3237;
 }
