@@ -47,7 +47,7 @@
             <Pane fx:id="MortgagePane" layoutX="-28.0" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: #13ae63;" />
             <Pane fx:id="CalculatorPane" layoutX="-28.0" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: #FFFFFF;">
                <children>
-                  <Button fx:id="ac" layoutX="230.0" layoutY="230.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="AC">
+                  <Button fx:id="ac" layoutX="230.0" layoutY="230.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="AC">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -59,7 +59,7 @@
                      </padding>
                   </Button>
                   <Line endX="811.0" layoutX="99.0" layoutY="198.0" opacity="0.4" startX="-99.0" />
-                  <Button layoutX="338.0" layoutY="230.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="CLR" fx:id="x">
+                  <Button layoutX="338.0" layoutY="230.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="CLR" fx:id="x">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -70,7 +70,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="percent" layoutX="445.0" layoutY="230.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="\%">
+                  <Button fx:id="percent" layoutX="445.0" layoutY="230.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="\%">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -81,7 +81,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="slash" layoutX="553.0" layoutY="230.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="/">
+                  <Button fx:id="slash" layoutX="553.0" layoutY="230.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="/">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -92,7 +92,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="seven" alignment="CENTER" layoutX="230.0" layoutY="302.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="7">
+                  <Button fx:id="seven" alignment="CENTER" layoutX="230.0" layoutY="302.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="7">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -103,7 +103,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="four" alignment="CENTER" layoutX="230.0" layoutY="369.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="4">
+                  <Button fx:id="four" alignment="CENTER" layoutX="230.0" layoutY="369.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="4">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -114,7 +114,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="one" alignment="CENTER" layoutX="230.0" layoutY="439.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="1">
+                  <Button fx:id="one" alignment="CENTER" layoutX="230.0" layoutY="439.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="1">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -125,7 +125,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="zero" alignment="CENTER" layoutX="230.0" layoutY="508.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="0">
+                  <Button fx:id="zero" alignment="CENTER" layoutX="230.0" layoutY="508.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="0">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -136,7 +136,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="eight" layoutX="338.0" layoutY="302.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="8">
+                  <Button fx:id="eight" layoutX="338.0" layoutY="302.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="8">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -147,7 +147,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="five" layoutX="338.0" layoutY="369.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="5">
+                  <Button fx:id="five" layoutX="338.0" layoutY="369.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="5">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -158,7 +158,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="two" layoutX="338.0" layoutY="439.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="2">
+                  <Button fx:id="two" layoutX="338.0" layoutY="439.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="2">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -169,7 +169,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="zero_zero" layoutX="338.0" layoutY="508.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="00">
+                  <Button fx:id="zero_zero" layoutX="338.0" layoutY="508.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="00">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -180,7 +180,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="nine" layoutX="445.0" layoutY="302.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="9">
+                  <Button fx:id="nine" layoutX="445.0" layoutY="302.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="9">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -191,7 +191,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="six" layoutX="445.0" layoutY="369.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="6">
+                  <Button fx:id="six" layoutX="445.0" layoutY="369.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="6">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -202,7 +202,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="three" layoutX="445.0" layoutY="439.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="3">
+                  <Button fx:id="three" layoutX="445.0" layoutY="439.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="3">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -213,7 +213,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="full_stop" layoutX="445.0" layoutY="508.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text=".">
+                  <Button fx:id="full_stop" layoutX="445.0" layoutY="508.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text=".">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -224,7 +224,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="multi" layoutX="553.0" layoutY="302.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="X">
+                  <Button fx:id="multi" layoutX="553.0" layoutY="302.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="X">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -235,7 +235,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="subtraction" layoutX="553.0" layoutY="369.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="-">
+                  <Button fx:id="subtraction" layoutX="553.0" layoutY="369.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="-">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -246,7 +246,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="plus" layoutX="553.0" layoutY="439.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="+">
+                  <Button fx:id="plus" layoutX="553.0" layoutY="439.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="+">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -257,7 +257,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="equal" layoutX="553.0" layoutY="508.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="71.0" text="=">
+                  <Button fx:id="equal" layoutX="553.0" layoutY="508.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="=">
                      <effect>
                         <DropShadow />
                      </effect>
