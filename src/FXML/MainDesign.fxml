@@ -275,12 +275,12 @@
                      <children>
                         <Label fx:id="userValue" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="4.0" layoutY="15.0" prefHeight="60.0" prefWidth="869.0">
                            <font>
-                              <Font size="21.0" />
+                              <Font name="Serif Regular" size="21.0" />
                            </font>
                         </Label>
                         <Label fx:id="output" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="6.0" layoutY="67.0" prefHeight="50.0" prefWidth="869.0">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Serif Regular" size="17.0" />
                            </font>
                         </Label>
                      </children>
