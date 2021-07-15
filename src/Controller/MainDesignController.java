@@ -48,9 +48,6 @@ public class MainDesignController implements Initializable
     }
 
 
-
-
-
     public void ActionEvent(ActionEvent actionEvent)
     {
         if(actionEvent.getSource()==CalculatorButton)
@@ -698,7 +695,7 @@ public class MainDesignController implements Initializable
         output.setText(output1);
     }
 
-    
+
 
 
 

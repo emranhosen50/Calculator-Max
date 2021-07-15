@@ -1,4 +1,6 @@
-#one,#two,#three,#four,#five,#six,#seven,#eight,#nine,#zero,#zero_zero,#full_stop
+#one,#two,#three,#four,#five,#six,#seven,#eight,#nine,#zero,#zero_zero,#full_stop,#currencyButton,
+#lengthButton,#areaButton,#volumeButton,#speedButton,#timeButton,#massButton,#numeralButton,#temperatureButton
+
 {
     -fx-text-fill:#FF6600;
     text-align: center;
@@ -9,11 +11,13 @@
 
     -fx-padding: 8 8 8 8;
 }
-#one:hover,#two:hover,#three:hover,#four:hover,#five:hover,#six:hover,#seven:hover,#eight:hover,#nine:hover,#zero:hover,#zero_zero:hover,#full_stop:hover
+#one:hover,#two:hover,#three:hover,#four:hover,#five:hover,#six:hover,#seven:hover,#eight:hover,#nine:hover,#zero:hover,#zero_zero:hover,#full_stop:hover,
+#currencyButton:hover,#lengthButton:hover,#areaButton:hover,#volumeButton:hover,#speedButton:hover,#timeButton:hover,#massButton:hover,#numeralButton:hover,#temperatureButton:hover
 {
     -fx-background-color : #D8D8D8;
 }
-#one:pressed,#two:pressed,#three:pressed,#four:pressed,#five:pressed,#six:pressed,#seven:pressed,#eight:pressed,#nine:pressed,#zero:pressed,#zero_zero:pressed,#full_stop:pressed
+#one:pressed,#two:pressed,#three:pressed,#four:pressed,#five:pressed,#six:pressed,#seven:pressed,#eight:pressed,#nine:pressed,#zero:pressed,#zero_zero:pressed,#full_stop:pressed,
+#currencyButton:pressed,#lengthButton:pressed,#areaButton:pressed,#volumeButton:pressed,#speedButton:pressed,#timeButton:pressed,#massButton:pressed,#numeralButton:pressed,#temperatureButton:pressed
 {
     -fx-background-color : #727272;
 }
@@ -21,7 +25,8 @@
 
 
 
-#multi,#plus,#subtraction,#equal,#slash,#percent,#x,#ac
+#multi,#plus,#subtraction,#equal,#slash,#percent,#x,#ac,
+#converterACButton,#converterButton,#converterCLRButton
 {
     -fx-text-fill:#FFFFFF;
     text-align: center;
@@ -32,11 +37,13 @@
 
     -fx-padding: 8 8 8 8;
 }
-#multi:hover,#plus:hover,#subtraction:hover,#equal:hover,#slash:hover,#percent:hover,#x:hover,#ac:hover
+#multi:hover,#plus:hover,#subtraction:hover,#equal:hover,#slash:hover,#percent:hover,#x:hover,#ac:hover,
+#converterACButton:hover,#converterButton:hover,#converterCLRButton:hover
 {
     -fx-background-color : #CB331B;
 }
-#multi:pressed,#plus:pressed,#subtraction:pressed,#equal:pressed,#slash:pressed,#percent:pressed,#x:pressed,#ac:pressed
+#multi:pressed,#plus:pressed,#subtraction:pressed,#equal:pressed,#slash:pressed,#percent:pressed,#x:pressed,#ac:pressed,
+#converterACButton:pressed,#converterButton:pressed,#converterCLRButton:pressed
 {
     -fx-background-color : #8A2314;
 }
