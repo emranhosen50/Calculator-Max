@@ -26,22 +26,22 @@ public class Main extends Application {
 
         MainDesignController mainDesignController= loader.getController();
 
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-
-                System.out.println("Hi Enter");
-
-                switch (keyEvent.getCode())
-                {
-                    case SPACE:
-                        System.out.println("Hi Enter");
-                }
-
-                System.out.println("KeyBoard Click: "+keyEvent.getCode());
-                mainDesignController.KeyPressAction(keyEvent);
-            }
-        });
+//        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+//            @Override
+//            public void handle(KeyEvent keyEvent) {
+//
+//                System.out.println("Hi Enter");
+//
+//                switch (keyEvent.getCode())
+//                {
+//                    case SPACE:
+//                        System.out.println("Hi Enter");
+//                }
+//
+//                System.out.println("KeyBoard Click: "+keyEvent.getCode());
+//                mainDesignController.KeyPressAction(keyEvent);
+//            }
+//        });
 
 
         scene.getStylesheets().add(getClass().getResource("../CSS/TotalCSSDesign.css").toExternalForm());

@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 import java.net.URL;
@@ -37,14 +38,15 @@ public class MainDesignController implements Initializable
     public String PublicOperator="NULL";
     //public String publicKeyBoardValue="Emran";
     public int conditionForOperator;
+    String PO1="Don't have any Previous Output",PO2="Don't have any Previous Output";
 
-    String oneTTT= String.valueOf(one);
+    //String oneTTT= String.valueOf(one);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        x.setDisable(true);
+        //x.setDisable(true);
         fontSizeRestore();
-        System.out.println("oneTTT: "+oneTTT);
+        //System.out.println("oneTTT: "+oneTTT);
     }
 
 
@@ -72,11 +74,11 @@ public class MainDesignController implements Initializable
 
     public void CalculatorButtonAction(ActionEvent actionEventForCB)
     {
-        System.out.println("KeyEvent HI");
+        userValue.setTextFill(Color.web("#1D1D1D", 1));
+        output.setTextFill(Color.web("#1D1D1D", 1));
         if(actionEventForCB.getSource()==one)
         {
-            System.out.println("oneTTT: "+one);
-
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueOne,"Emran");
             OperandStore(Integer.toString(ValueOne));
@@ -84,6 +86,7 @@ public class MainDesignController implements Initializable
         }
         else if(actionEventForCB.getSource()==two)
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueTwo,"Emran");
             OperandStore(Integer.toString(ValueTwo));
@@ -91,6 +94,7 @@ public class MainDesignController implements Initializable
         }
         else if(actionEventForCB.getSource()==three)
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueThree,"Emran");
             OperandStore(Integer.toString(ValueThree));
@@ -98,6 +102,7 @@ public class MainDesignController implements Initializable
         }
         else if(actionEventForCB.getSource()==four)
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueFour,"Emran");
             OperandStore(Integer.toString(ValueFour));
@@ -105,8 +110,7 @@ public class MainDesignController implements Initializable
         }
         else if(actionEventForCB.getSource()==five)
         {
-
-            System.out.println("Hi Sure ");
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueFive,"Emran");
             OperandStore(Integer.toString(ValueFive));
@@ -115,6 +119,7 @@ public class MainDesignController implements Initializable
         }
         else if(actionEventForCB.getSource()==six)
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueSix,"Emran");
             OperandStore(Integer.toString(ValueSix));
@@ -122,6 +127,7 @@ public class MainDesignController implements Initializable
         }
         else if(actionEventForCB.getSource()==seven)
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueSeven,"Emran");
             OperandStore(Integer.toString(ValueSeven));
@@ -129,6 +135,7 @@ public class MainDesignController implements Initializable
         }
         else if(actionEventForCB.getSource()==eight)
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueEight,"Emran");
             OperandStore(Integer.toString(ValueEight));
@@ -136,6 +143,7 @@ public class MainDesignController implements Initializable
         }
         else if(actionEventForCB.getSource()==nine)
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueNine,"Emran");
             OperandStore(Integer.toString(ValueNine));
@@ -143,6 +151,7 @@ public class MainDesignController implements Initializable
         }
         else if(actionEventForCB.getSource()==zero)
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueZero,"Emran");
             OperandStore(Integer.toString(ValueZero));
@@ -150,6 +159,7 @@ public class MainDesignController implements Initializable
         }
         else if(actionEventForCB.getSource()==zero_zero)
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(-1,ValueZeroZero);
             OperandStore(ValueZeroZero);
@@ -157,6 +167,7 @@ public class MainDesignController implements Initializable
         }
         else if(actionEventForCB.getSource()==full_stop)
         {
+            CheckPO();
             fontSizeRestore();
             if(userValue.getText().isEmpty() || getLastValue(userValue.getText()) == '+' ||  getLastValue(userValue.getText()) == '-' || getLastValue(userValue.getText()) == '*' || getLastValue(userValue.getText()) == '/' || getLastValue(userValue.getText()) == '%')
             {
@@ -170,10 +181,13 @@ public class MainDesignController implements Initializable
             }
             return;
         }
-
         else if(actionEventForCB.getSource()==equal)
         {
-            //calculationMethod();
+            if(lastValue=='A')
+            {
+                output.setText("");
+                userValue.setText("");
+            } //This Condition Similar to 372 line to 380 line
             userValue.setFont(new Font("Serif",13));
             output.setFont(new Font("Serif", 25));
             userValue.setText(userValue.getText());
@@ -182,20 +196,38 @@ public class MainDesignController implements Initializable
         }
         else if(actionEventForCB.getSource()==x)
         {
-            if(userValue.getText().length()==0 || userValue.getText().length()==1)
+            if(PO2.equals("Don't have any Previous Output") || PO1.equals("Don't have any Previous Output"))
             {
+                output.setFont(new Font("Serif", 25));
+                output.setTextFill(Color.web("#ff6600", 1));
+                output.setText(PO2);
                 userValue.setText("");
                 return;
             }
             else
             {
-                String RemoveValue=removeLastChar(userValue.getText());
-                userValue.setText(RemoveValue);
+                userValue.setFont(new Font("Serif",13));
+                output.setFont(new Font("Serif", 25));
+                userValue.setTextFill(Color.web("#ff6600", 0.9));
+                output.setTextFill(Color.web("#ff6600", 1));
+                userValue.setText(PO1);
+                output.setText("=> It’s just an (Previous Output)             "+PO2);
+                return;
             }
 
+            //When Using Remove Elements...
+//            if(userValue.getText().length()==0 || userValue.getText().length()==1) {
+//                userValue.setText("");
+//                return; }
+//            else
+//            { String RemoveValue=removeLastChar(userValue.getText());  userValue.setText(RemoveValue); }
         }
         else if(actionEventForCB.getSource()==ac)
         {
+            if(PO1==userValue.getText() || PO2==output.getText()) {  }
+            else if(userValue.getText().isEmpty() || output.getText().isEmpty()){  }
+            else { PO1=userValue.getText(); PO2=output.getText(); }
+
             fontSizeRestore();
             conditionForOperator=10;
             StoreCalculationValue=0;
@@ -208,134 +240,155 @@ public class MainDesignController implements Initializable
         }
 
         lastValue= getLastValue(userValue.getText());
+        System.out.println("LastValue: "+lastValue);
 
-        //System.out.println("LastValue: "+lastValue);
-        if(lastValue=='+' || lastValue=='-' || lastValue=='x' || lastValue=='/' || lastValue=='.' || lastValue=='%')
+        if(!(lastValue =='A')) //When A then get Exception and this Condition Will break this Problems
         {
-            //System.out.println("Entry If ?");
-            //System.out.println("userValue.getText() :"+userValue.getText());
-            //When Already add any Operator then user again push to change this .. then this Function will be work
-            String RemoveValue=removeLastChar(userValue.getText());
-            //System.out.println("RemoveValue :"+RemoveValue);
-
-            userValue.setText(RemoveValue);
-
-
-            //System.out.println("Shit: "+lastValue);
-
-            try {
-                if(StoreCalculationValue==0)
-                { BeforeCalValue= Double.parseDouble(SplitString); }
-                else
-                { BeforeCalValue=StoreCalculationValue; }
-
-                SplitString="";
-            }catch (Exception e)
+            if(lastValue=='+' || lastValue=='-' || lastValue=='x' || lastValue=='/' || lastValue=='.' || lastValue=='%')
             {
-                System.out.println("Error E2H");
-            }
+                //System.out.println("Entry If ?");
+                //System.out.println("userValue.getText() :"+userValue.getText());
+                //When Already add any Operator then user again push to change this .. then this Function will be work
+                String RemoveValue=removeLastChar(userValue.getText());
+                //System.out.println("RemoveValue :"+RemoveValue);
 
-            if(actionEventForCB.getSource()==plus)
-            {
-                //System.out.println("Hi Plus");
-                fontSizeRestore();
-                conditionForOperator=1;
-                PrintMethod(-1,ValuePlus);
-                return;
-            }
-            else if(actionEventForCB.getSource()==subtraction)
-            {
-                fontSizeRestore();
-                conditionForOperator=2;
-                PrintMethod(-1,ValueSubtraction);
-                return;
-            }
-            else if(actionEventForCB.getSource()==multi)
-            {
-                fontSizeRestore();
-                conditionForOperator=3;
-                PrintMethod(-1,ValueMulti);
-                return;
-            }
-            else if(actionEventForCB.getSource()==slash)
-            {
-                fontSizeRestore();
-                conditionForOperator=4;
-                PrintMethod(-1,ValueSlash);
-                return;
-            }
-            else if(actionEventForCB.getSource()==percent)
-            {
-                userValue.setFont(new Font("Serif",13));
-                output.setFont(new Font("Serif", 25));
-                conditionForOperator=5;
-                PrintMethod(-1,ValuePercent);
-                calculationMethod();
-                OperandStore(Integer.toString(ValueNine));
-                return;
-            }
+                userValue.setText(RemoveValue);
 
+
+                //System.out.println("Shit: "+lastValue);
+
+                try {
+                    if(StoreCalculationValue==0)
+                    { BeforeCalValue= Double.parseDouble(SplitString); }
+                    else
+                    { BeforeCalValue=StoreCalculationValue; }
+
+                    SplitString="";
+                }catch (Exception e)
+                {
+                    System.out.println("Error E2H 265");
+                }
+
+                if(actionEventForCB.getSource()==plus)
+                {
+                    fontSizeRestore();
+                    conditionForOperator=1;
+                    PrintMethod(-1,ValuePlus);
+                    return;
+                }
+                else if(actionEventForCB.getSource()==subtraction)
+                {
+                    fontSizeRestore();
+                    conditionForOperator=2;
+                    PrintMethod(-1,ValueSubtraction);
+                    return;
+                }
+                else if(actionEventForCB.getSource()==multi)
+                {
+                    fontSizeRestore();
+                    conditionForOperator=3;
+                    PrintMethod(-1,ValueMulti);
+                    return;
+                }
+                else if(actionEventForCB.getSource()==slash)
+                {
+                    fontSizeRestore();
+                    conditionForOperator=4;
+                    PrintMethod(-1,ValueSlash);
+                    return;
+                }
+                else if(actionEventForCB.getSource()==percent)
+                {
+                    userValue.setFont(new Font("Serif",13));
+                    output.setFont(new Font("Serif", 25));
+                    conditionForOperator=5;
+                    PrintMethod(-1,ValuePercent);
+                    calculationMethod();
+                    OperandStore(Integer.toString(ValueNine));
+                    return;
+                }
+
+            }
+            else
+            {
+                CheckPO();
+                try {
+
+                    if(StoreCalculationValue==0)
+                    { BeforeCalValue= Double.parseDouble(SplitString); }
+                    else
+                    { BeforeCalValue=StoreCalculationValue; }
+
+                    System.out.println("Else ?");
+
+                    SplitString="";
+
+                    if(actionEventForCB.getSource()==plus)
+                    {
+                        fontSizeRestore();
+                        conditionForOperator=1;
+                        PrintMethod(-1,ValuePlus);
+                        return;
+                    }
+                    else if(actionEventForCB.getSource()==subtraction)
+                    {
+                        fontSizeRestore();
+                        conditionForOperator=2;
+                        PrintMethod(-1,ValueSubtraction);
+                        return;
+                    }
+                    else if(actionEventForCB.getSource()==multi)
+                    {
+                        fontSizeRestore();
+                        conditionForOperator=3;
+                        PrintMethod(-1,ValueMulti);
+                        return;
+                    }
+                    else if(actionEventForCB.getSource()==slash)
+                    {
+                        fontSizeRestore();
+                        conditionForOperator=4;
+                        PrintMethod(-1,ValueSlash);
+                        return;
+                    }
+                    ////
+                    else if(actionEventForCB.getSource()==percent)
+                    {
+                        userValue.setFont(new Font("Serif",13));
+                        output.setFont(new Font("Serif", 25));
+                        conditionForOperator=5;
+                        PrintMethod(-1,ValuePercent);
+                        OperandStore(Integer.toString(ValueNine)); //For Direct action in Output
+                        calculationMethod();                      //For Direct action in Output
+                        return;
+                    }
+                }catch (Exception e)
+                {
+                    System.out.println("Error E2H 365");
+                }
+
+
+            }
         }
         else
         {
-            if(StoreCalculationValue==0)
-            { BeforeCalValue= Double.parseDouble(SplitString); }
-            else
-            { BeforeCalValue=StoreCalculationValue; }
-
-            System.out.println("Else ?");
-
-            SplitString="";
-
-            if(actionEventForCB.getSource()==plus)
-            {
-                fontSizeRestore();
-                conditionForOperator=1;
-                PrintMethod(-1,ValuePlus);
-                return;
-            }
-            else if(actionEventForCB.getSource()==subtraction)
-            {
-                fontSizeRestore();
-                conditionForOperator=2;
-                PrintMethod(-1,ValueSubtraction);
-                return;
-            }
-            else if(actionEventForCB.getSource()==multi)
-            {
-                fontSizeRestore();
-                conditionForOperator=3;
-                PrintMethod(-1,ValueMulti);
-                return;
-            }
-            else if(actionEventForCB.getSource()==slash)
-            {
-                fontSizeRestore();
-                conditionForOperator=4;
-                PrintMethod(-1,ValueSlash);
-                return;
-            }
-            ////
-            else if(actionEventForCB.getSource()==percent)
-            {
-                userValue.setFont(new Font("Serif",13));
-                output.setFont(new Font("Serif", 25));
-                conditionForOperator=5;
-                PrintMethod(-1,ValuePercent);
-                OperandStore(Integer.toString(ValueNine)); //For Direct action in Output
-                calculationMethod();                      //For Direct action in Output
-                return;
-            }
+            output.setText("");
+            userValue.setText("");
+            //PO1=""; PO2="";
         }
+
 
     }
 
     public void KeyPressAction(KeyEvent keyEvent)
     {
+        userValue.setTextFill(Color.web("#1D1D1D", 1));
+        output.setTextFill(Color.web("#1D1D1D", 1));
         //System.out.println(keyEvent.getCode().toString());
         //publicKeyBoardValue=keyEvent.getCode().toString();
         if(keyEvent.getCode().toString().equals("DIGIT1") || keyEvent.getCode().toString().equals("NUMPAD1"))
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueOne,"Emran");
             OperandStore(Integer.toString(ValueOne));
@@ -343,6 +396,7 @@ public class MainDesignController implements Initializable
         }
         else if(keyEvent.getCode().toString().equals("DIGIT2") || keyEvent.getCode().toString().equals("NUMPAD2"))
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueTwo,"Emran");
             OperandStore(Integer.toString(ValueTwo));
@@ -350,6 +404,7 @@ public class MainDesignController implements Initializable
         }
         else if(keyEvent.getCode().toString().equals("DIGIT3") || keyEvent.getCode().toString().equals("NUMPAD3"))
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueThree,"Emran");
             OperandStore(Integer.toString(ValueThree));
@@ -357,7 +412,7 @@ public class MainDesignController implements Initializable
         }
         else if(keyEvent.getCode().toString().equals("DIGIT4") || keyEvent.getCode().toString().equals("NUMPAD4"))
         {
-
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueFour,"Emran");
             OperandStore(Integer.toString(ValueFour));
@@ -365,6 +420,7 @@ public class MainDesignController implements Initializable
         }
         else if(keyEvent.getCode().toString().equals("DIGIT5") || keyEvent.getCode().toString().equals("NUMPAD5"))
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueFive,"Emran");
             OperandStore(Integer.toString(ValueFive));
@@ -372,6 +428,7 @@ public class MainDesignController implements Initializable
         }
         else if(keyEvent.getCode().toString().equals("DIGIT6") || keyEvent.getCode().toString().equals("NUMPAD6"))
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueSix,"Emran");
             OperandStore(Integer.toString(ValueSix));
@@ -379,6 +436,7 @@ public class MainDesignController implements Initializable
         }
         else if(keyEvent.getCode().toString().equals("DIGIT7") || keyEvent.getCode().toString().equals("NUMPAD7"))
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueSeven,"Emran");
             OperandStore(Integer.toString(ValueSeven));
@@ -386,6 +444,7 @@ public class MainDesignController implements Initializable
         }
         else if(keyEvent.getCode().toString().equals("DIGIT8") || keyEvent.getCode().toString().equals("NUMPAD8"))
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueEight,"Emran");
             OperandStore(Integer.toString(ValueEight));
@@ -393,6 +452,7 @@ public class MainDesignController implements Initializable
         }
         else if(keyEvent.getCode().toString().equals("DIGIT9") || keyEvent.getCode().toString().equals("NUMPAD9"))
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueNine,"Emran");
             OperandStore(Integer.toString(ValueNine));
@@ -400,6 +460,7 @@ public class MainDesignController implements Initializable
         }
         else if(keyEvent.getCode().toString().equals("DIGIT0") || keyEvent.getCode().toString().equals("NUMPAD0"))
         {
+            CheckPO();
             fontSizeRestore();
             PrintMethod(ValueZero,"Emran");
             OperandStore(Integer.toString(ValueZero));
@@ -407,6 +468,7 @@ public class MainDesignController implements Initializable
         }
         else if(keyEvent.getCode().toString().equals("DECIMAL"))
         {
+            CheckPO();
             fontSizeRestore();
             if(userValue.getText().isEmpty() || getLastValue(userValue.getText()) == '+' ||  getLastValue(userValue.getText()) == '-' || getLastValue(userValue.getText()) == '*' || getLastValue(userValue.getText()) == '/' || getLastValue(userValue.getText()) == '%')
             {
@@ -419,15 +481,18 @@ public class MainDesignController implements Initializable
                 OperandStore(".");
             }
             return;
-        }
+        }//////////
         else if(keyEvent.getCode().toString().equals("EQUALS"))
         {
-            //calculationMethod();
+            if(lastValue=='A')
+            {
+                output.setText("");
+                userValue.setText("");
+            } //This Condition Similar to 372 line to 380 line
             userValue.setFont(new Font("Serif",13));
             output.setFont(new Font("Serif", 25));
             userValue.setText(userValue.getText());
             output.setText(output.getText());
-
             return;
         }
 
@@ -444,21 +509,51 @@ public class MainDesignController implements Initializable
 //            //return;
 //        }
 
-        else if(keyEvent.getCode().toString().equals("BACK_SPACE Not Working Now"))
+        else if(keyEvent.getCode().toString().equals("BACK_SPACE"))
         {
-            if(userValue.getText().length()==0 || userValue.getText().length()==1)
+            if(PO2.equals("Don't have any Previous Output") || PO1.equals("Don't have any Previous Output"))
             {
+                output.setFont(new Font("Serif", 25));
+                output.setTextFill(Color.web("#ff6600", 1));
+                output.setText(PO2);
                 userValue.setText("");
                 return;
             }
             else
             {
-                String RemoveValue=removeLastChar(userValue.getText());
-                userValue.setText(RemoveValue);
+                if(PO2.equals("Don't have any Previous Output") || PO1.equals("Don't have any Previous Output"))
+                {
+                    output.setFont(new Font("Serif", 25));
+                    output.setTextFill(Color.web("#ff6600", 1));
+                    output.setText(PO2);
+                    userValue.setText("");
+                    return;
+                }
+                else
+                {
+                    userValue.setFont(new Font("Serif",13));
+                    output.setFont(new Font("Serif", 25));
+                    userValue.setTextFill(Color.web("#ff6600", 0.9));
+                    output.setTextFill(Color.web("#ff6600", 1));
+                    userValue.setText(PO1);
+                    output.setText("=> It’s just an (Previous Output)             "+PO2);
+                    return;
+                }
+
+                //When Using Remove Elements...
+//            if(userValue.getText().length()==0 || userValue.getText().length()==1) {
+//                userValue.setText("");
+//                return; }
+//            else
+//            { String RemoveValue=removeLastChar(userValue.getText());  userValue.setText(RemoveValue); }
             }
         }
         else if(keyEvent.getCode().toString().equals("ESCAPE") )
         {
+            if(PO1==userValue.getText() || PO2==output.getText()) {  }
+            else if(userValue.getText().isEmpty() || output.getText().isEmpty()){  }
+            else { PO1=userValue.getText(); PO2=output.getText(); }
+
             fontSizeRestore();
             conditionForOperator=10;
             StoreCalculationValue=0;
@@ -474,110 +569,121 @@ public class MainDesignController implements Initializable
             System.out.println("NO BRO Wrong Press !!!");
         }
         lastValue= getLastValue(userValue.getText());
-
-        //System.out.println("LastValue: "+lastValue);
-        if(lastValue=='+' || lastValue=='-' || lastValue=='x' || lastValue=='/' || lastValue=='.' || lastValue=='%')
+        System.out.println("LastValue: "+lastValue);
+        if(!(lastValue =='A')) //When A then get Exception and this Condition Will break this Problems
         {
-            //System.out.println("Entry If ?");
-            //System.out.println("userValue.getText() :"+userValue.getText());
-            //When Already add any Operator then user again push to change this .. then this Function will be work
-            String RemoveValue=removeLastChar(userValue.getText());
-            //System.out.println("RemoveValue :"+RemoveValue);
-
-            userValue.setText(RemoveValue);
-
-
-            //System.out.println("Shit: "+lastValue);
-
-            try {
-                if(StoreCalculationValue==0)
-                { BeforeCalValue= Double.parseDouble(SplitString); }
-                else
-                { BeforeCalValue=StoreCalculationValue; }
-
-                SplitString="";
-            }catch (Exception e)
+            if(lastValue=='+' || lastValue=='-' || lastValue=='x' || lastValue=='/' || lastValue=='.' || lastValue=='%')
             {
-                System.out.println("Error E2H");
-            }
-            ////
-            if(keyEvent.getCode().toString().equals("ADD"))
-            {
-                //System.out.println("Hi Plus");
-                fontSizeRestore();
-                conditionForOperator=1;
-                PrintMethod(-1,ValuePlus);
-                return;
-            }
-            else if(keyEvent.getCode().toString().equals("SUBTRACT"))
-            {
-                fontSizeRestore();
-                conditionForOperator=2;
-                PrintMethod(-1,ValueSubtraction);
-                return;
-            }
-            else if(keyEvent.getCode().toString().equals("MULTIPLY"))
-            {
-                fontSizeRestore();
-                conditionForOperator=3;
-                PrintMethod(-1,ValueMulti);
-                return;
-            }
-            else if(keyEvent.getCode().toString().equals("DIVIDE"))
-            {
-                fontSizeRestore();
-                conditionForOperator=4;
-                PrintMethod(-1,ValueSlash);
-                return;
-            }
+                //System.out.println("Entry If ?");
+                //System.out.println("userValue.getText() :"+userValue.getText());
+                //When Already add any Operator then user again push to change this .. then this Function will be work
+                String RemoveValue=removeLastChar(userValue.getText());
+                //System.out.println("RemoveValue :"+RemoveValue);
 
-        }
+                userValue.setText(RemoveValue);
+
+                //System.out.println("Shit: "+lastValue);
+
+                try {
+                    if(StoreCalculationValue==0)
+                    { BeforeCalValue= Double.parseDouble(SplitString); }
+                    else
+                    { BeforeCalValue=StoreCalculationValue; }
+
+                    SplitString="";
+                }catch (Exception e)
+                {
+                    System.out.println("Error E2H 600+");
+                }
+                ////
+                if(keyEvent.getCode().toString().equals("ADD"))
+                {
+                    //System.out.println("Hi Plus");
+                    fontSizeRestore();
+                    conditionForOperator=1;
+                    PrintMethod(-1,ValuePlus);
+                    return;
+                }
+                else if(keyEvent.getCode().toString().equals("SUBTRACT"))
+                {
+                    fontSizeRestore();
+                    conditionForOperator=2;
+                    PrintMethod(-1,ValueSubtraction);
+                    return;
+                }
+                else if(keyEvent.getCode().toString().equals("MULTIPLY"))
+                {
+                    fontSizeRestore();
+                    conditionForOperator=3;
+                    PrintMethod(-1,ValueMulti);
+                    return;
+                }
+                else if(keyEvent.getCode().toString().equals("DIVIDE"))
+                {
+                    fontSizeRestore();
+                    conditionForOperator=4;
+                    PrintMethod(-1,ValueSlash);
+                    return;
+                }
+
+            }
+            else
+            {
+                CheckPO();
+                try {
+                    if(StoreCalculationValue==0)
+                    { BeforeCalValue= Double.parseDouble(SplitString); }
+                    else
+                    { BeforeCalValue=StoreCalculationValue; }
+
+                    //System.out.println("Else ?");
+
+                    SplitString="";
+
+                    if(keyEvent.getCode().toString().equals("ADD"))
+                    {
+                        fontSizeRestore();
+                        conditionForOperator=1;
+                        PrintMethod(-1,ValuePlus);
+                        return;
+                    }
+                    else if(keyEvent.getCode().toString().equals("SUBTRACT"))
+                    {
+                        fontSizeRestore();
+                        conditionForOperator=2;
+                        PrintMethod(-1,ValueSubtraction);
+                        return;
+                    }
+                    else if(keyEvent.getCode().toString().equals("MULTIPLY"))
+                    {
+                        fontSizeRestore();
+                        conditionForOperator=3;
+                        PrintMethod(-1,ValueMulti);
+                        return;
+                    }
+                    else if(keyEvent.getCode().toString().equals("DIVIDE"))
+                    {
+                        fontSizeRestore();
+                        conditionForOperator=4;
+                        PrintMethod(-1,ValueSlash);
+                        return;
+                    }
+                }catch (Exception e)
+                {
+                    System.out.println("Error E2H 650+");
+                }
+
+            }
+        }//if(!(lastValue =='A'))
         else
         {
-            if(StoreCalculationValue==0)
-            { BeforeCalValue= Double.parseDouble(SplitString); }
-            else
-            { BeforeCalValue=StoreCalculationValue; }
-
-            //System.out.println("Else ?");
-
-            SplitString="";
-
-            if(keyEvent.getCode().toString().equals("ADD"))
-            {
-                fontSizeRestore();
-                conditionForOperator=1;
-                PrintMethod(-1,ValuePlus);
-                return;
-            }
-            else if(keyEvent.getCode().toString().equals("SUBTRACT"))
-            {
-                fontSizeRestore();
-                conditionForOperator=2;
-                PrintMethod(-1,ValueSubtraction);
-                return;
-            }
-            else if(keyEvent.getCode().toString().equals("MULTIPLY"))
-            {
-                fontSizeRestore();
-                conditionForOperator=3;
-                PrintMethod(-1,ValueMulti);
-                return;
-            }
-            else if(keyEvent.getCode().toString().equals("DIVIDE"))
-            {
-                fontSizeRestore();
-                conditionForOperator=4;
-                PrintMethod(-1,ValueSlash);
-                return;
-            }
+            output.setText("");
+            userValue.setText("");
+            //PO1=""; PO2="";
         }
 
 
-    }
 
-    private static String removeLastChar(String str) {
-        return str.substring(0, str.length() - 1);
     }
 
     public void PrintMethod(int valueI,String valueS)
@@ -677,6 +783,10 @@ public class MainDesignController implements Initializable
         output.setFont(new Font("Serif",19));
     }
 
+    private static String removeLastChar(String str) {
+        return str.substring(0, str.length() - 1);
+    }
+
     public char getLastValue(String valueInString)
     {
         char StoreLastValue;
@@ -693,6 +803,18 @@ public class MainDesignController implements Initializable
     public void setOutput(String output1)
     {
         output.setText(output1);
+    }
+
+    public void CheckPO()
+    {
+        if(!PO2.equals("Don't have any Previous Output") || !PO1.equals("Don't have any Previous Output"))
+        {
+            System.out.println("Cooooollllllll");
+            output.setText("");
+            userValue.setText("");
+            PO1="Don't have any Previous Output";
+            PO2="Don't have any Previous Output";
+        }
     }
 
 
