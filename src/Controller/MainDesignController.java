@@ -1,11 +1,14 @@
 package Controller;
 
+import animatefx.animation.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -30,6 +33,29 @@ public class MainDesignController implements Initializable
     @FXML
     Label userValue,output;
 
+    @FXML
+    Pane totalCalculatorView;
+
+    /////////////////////////////////////////////////////////........Converter...........//////////////////////////////////////////////////////////////////////////
+    @FXML
+    Button currencyButton,lengthButton,areaButton,volumeButton,speedButton,timeButton,massButton,numeralButton,temperatureButton,converterACButton,converterButton,converterCLRButton;
+
+    @FXML
+    TextField convertInput;
+
+    @FXML
+    Label titleConverter;
+
+    @FXML
+    Pane singlePaneFor9Item;
+
+    @FXML
+    ComboBox<String> leftComboBox,RightComboBox;
+
+    @FXML
+    CheckBox firstCheckBox,SecondCheckBox;
+
+
     int ValueOne=1,ValueTwo=2,ValueThree=3,ValueFour=4,ValueFive=5,ValueSix=6,ValueSeven=7,ValueEight=8,ValueNine=9,ValueZero=0;
     String ValueZeroZero="00",ValueFull_Stop="0.",ValueMulti="x",ValuePlus="+",ValueSubtraction="-",ValueEqual="=",ValueSlash="/",ValuePercent="%",ValueX="x",ValueAC= "";
     char lastValue;
@@ -40,14 +66,37 @@ public class MainDesignController implements Initializable
     public int conditionForOperator;
     String PO1="Don't have any Previous Output",PO2="Don't have any Previous Output";
 
-    //String oneTTT= String.valueOf(one);
+    /////////////////////////////
+    ObservableList<String> CurrencyList= FXCollections.observableArrayList( "Afghan Afghani", "Albanian Lek", "Algerian Dinar", "Angolan Kwanza", "Argentine Peso"," Armenian Dram", "Aruban Florinm",
+            "Australian Dollar", "Azerbaijani Manat", "Bahamian Dollar", "Bahraini Dinar", "Bajan dollar", "Bangladeshi Taka", "Belarusian Ruble", "Belize Dollar", "Bermudan Dollar", "Bhutan currency", "Bitcoin",
+            "Bitcoin Cash","Bolivian Bolivian", "Bosnia-Herzegovina Convertible Mark", "Botswanan Pula", "Brazilian Real","Brunei Dollar Bulgarian Lev","Burundian Franc", "CFP Franc", "Cambodian Riel", "Canadian Dollar", "Cape Verdean Escudo", "Cayman Islands Dollar",
+            "Central African CFA franc", "Chilean Peso", "Chilean Unit of Account (UF)", "Chinese Yuan", "Chinese Yuan (offshore)", "Colombian Peso", "Comorian franc", "Congolese Franc",
+            "Costa Rican Colds", "Croatian Kuna", "Cuban Peso"," Czech Koruna", "Danish Krone"," Djiboutian Franc"," Dominican Peso", "East Caribbean Dollar"," Egyptian Pound", "Ether", "Ethiopian Birr", "Euro",
+            "Fijian Dollar", "Gambian dalasi", "Georgian Lari", "Ghanaian Cedi", "Guatemalan Quetzal", "Guinean Franc", "Guyanaese Dollar", "Haitian Gourde",
+            "Honduran Lempira", "Hong Kong Dollar","Hungarian Forint", "Icelandic Kr6na", "Indian Rupee", "Indonesian Rupiah", "Iranian Rial", "Iraqi Dinar", "Israeli New Shekel",
+            "Jamaican Dollar", "Japanese Yen", "Jordanian Dinar", "Kazakhstani Tenge", "Kenyan Shilling", "Kuwaiti Dinar", "Kyrgystani Som", "Laotian Kip", "Lebanese pound", "Lesotho loti","Liberian Dollar",
+            "Swedish Krona", "Swiss Franc",
+            "Tajikistani Somoni", "Tanzanian Shilling","Thai Bahl", "Tongan Pa'anga Trinidad & Tobago Dollar", "Tunisian Dinar" ,"Turkish lira",
+            "Turkmenistani manat", "Ugandan Shilling", "Ukrainian hryvnia", "United Arab Emirates Dirham", "United States Dollar", "Uruguayan Peso", "Uzbekistani Som", "Vietnamese dong West", "African CFA franc", "Yemeni Rial", "Zambian Kwacha"
+            );
+    ObservableList<String> TemperatureList= FXCollections.observableArrayList("Celsius","Fahrenheit","Kelvin");
+    ObservableList<String> TimeList= FXCollections.observableArrayList("Nanosecond", "Microsecond", "Millisecond", "Second", "Minute", "Hour", "Day", "Week", "Month", "Calendar", "year", "Decade", "Century");
+    ObservableList<String> SpeedList= FXCollections.observableArrayList("Miles per hour" ,"Foot per second", "Meter per second", "Kilometer per hour", "Knot" );
+    ObservableList<String> LengthList= FXCollections.observableArrayList("kilometre", "Meter", "Centimeter", "Millimetre", "micrometres", "Nanometre", "Mile", "Yard", "Foot", "Inch", "Nautical", "mile" );
+    ObservableList<String> AreaList= FXCollections.observableArrayList("Square kilometer" ,"Square meter", "Square mile", "Square yard", "Square foot", "Square inch", "Hectare", "Acre" );
+    ObservableList<String> VolumeList= FXCollections.observableArrayList("US liquid gallon"," US liquid quart", "US liquid pint", "US legal cup", "fluid ounce", "US tablespoon", "US teaspoon", "Cubic meter",
+            "Liter", "Milliliter", "Imperial gallon", "imp. quart", "Imperial pint", "Imperial cup", "fluid ounce", "Imperial tablespoon", "Imperial teaspoon", "Cubic foot", "Cubic inch" );
+    ObservableList<String> NumeralList= FXCollections.observableArrayList("Binary" ,"Octal" ,"Decimal", "Hexadecimal" );
+    ObservableList<String> MassList= FXCollections.observableArrayList("tonne", "Kilogram", "Gram", "Milligram", "Microgram", "Imperial ton", "US ton", "Stone", "Pound", "Ounce" );
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //x.setDisable(true);
         fontSizeRestore();
         //System.out.println("oneTTT: "+oneTTT);
+
     }
+
 
 
     public void ActionEvent(ActionEvent actionEvent)
@@ -57,12 +106,15 @@ public class MainDesignController implements Initializable
             CalculatorPane.toFront();
             ConverterPane.toBack();
             MortgagePane.toBack();
+            new Flip(totalCalculatorView).play();
+
         }
         else if(actionEvent.getSource()==ConverterButton)
         {
             ConverterPane.toFront();
             CalculatorPane.toBack();
             MortgagePane.toBack();
+            AnimationEffect(currencyButton,lengthButton,areaButton,volumeButton,speedButton,timeButton,massButton,numeralButton,temperatureButton);
         }
         else if(actionEvent.getSource()==MortgageButton)
         {
@@ -70,6 +122,18 @@ public class MainDesignController implements Initializable
             ConverterPane.toBack();
             CalculatorPane.toBack();
         }
+    }
+    void AnimationEffect(Button currencyButton, Button lengthButton, Button areaButton, Button volumeButton, Button speedButton, Button timeButton, Button massButton, Button numeralButton, Button temperatureButton)
+    {
+        new Wobble(currencyButton).play();
+        new Wobble(lengthButton).play();
+        new Wobble(areaButton).play();
+        new Wobble(volumeButton).play();
+        new Wobble(speedButton).play();
+        new Wobble(timeButton).play();
+        new Wobble(massButton).play();
+        new Wobble(numeralButton).play();
+        new Wobble(temperatureButton).play();
     }
 
     public void CalculatorButtonAction(ActionEvent actionEventForCB)
@@ -258,10 +322,35 @@ public class MainDesignController implements Initializable
                 //System.out.println("Shit: "+lastValue);
 
                 try {
+
                     if(StoreCalculationValue==0)
-                    { BeforeCalValue= Double.parseDouble(SplitString); }
+                    {
+                        if(StoreCalculationValue==0.0 && BeforeCalValue==AfterCalValue)
+                        {
+                            BeforeCalValue=0.0;
+                            System.out.println("BeforeCalValue:  "+BeforeCalValue);
+                        }
+                        else
+                        {
+                            BeforeCalValue= Double.parseDouble(SplitString);
+                            System.out.println("If BeforeCalValue: "+BeforeCalValue);
+                        }
+
+                    }
                     else
-                    { BeforeCalValue=StoreCalculationValue; }
+                    {
+                        if(StoreCalculationValue==0.0 && BeforeCalValue==AfterCalValue)
+                        {
+                            BeforeCalValue=0.0;
+                            System.out.println("BeforeCalValue:  "+BeforeCalValue);
+                        }
+                        else
+                        {
+                            BeforeCalValue=StoreCalculationValue;
+                            System.out.println("else BeforeCalValue: "+BeforeCalValue);
+                        }
+
+                    }
 
                     SplitString="";
                 }catch (Exception e)
@@ -314,10 +403,35 @@ public class MainDesignController implements Initializable
                 CheckPO();
                 try {
 
+
                     if(StoreCalculationValue==0)
-                    { BeforeCalValue= Double.parseDouble(SplitString); }
+                    {
+                        if(StoreCalculationValue==0.0 && BeforeCalValue==AfterCalValue)
+                        {
+                            BeforeCalValue=0.0;
+                            System.out.println("BeforeCalValue:  "+BeforeCalValue);
+                        }
+                        else
+                        {
+                            BeforeCalValue= Double.parseDouble(SplitString);
+                            System.out.println("If BeforeCalValue: "+BeforeCalValue);
+                        }
+
+                    }
                     else
-                    { BeforeCalValue=StoreCalculationValue; }
+                    {
+                        if(StoreCalculationValue==0.0 && BeforeCalValue==AfterCalValue)
+                        {
+                            BeforeCalValue=0.0;
+                            System.out.println("BeforeCalValue:  "+BeforeCalValue);
+                        }
+                        else
+                        {
+                            BeforeCalValue=StoreCalculationValue;
+                            System.out.println("else BeforeCalValue: "+BeforeCalValue);
+                        }
+
+                    }
 
                     System.out.println("Else ?");
 
@@ -570,6 +684,7 @@ public class MainDesignController implements Initializable
         }
         lastValue= getLastValue(userValue.getText());
         System.out.println("LastValue: "+lastValue);
+
         if(!(lastValue =='A')) //When A then get Exception and this Condition Will break this Problems
         {
             if(lastValue=='+' || lastValue=='-' || lastValue=='x' || lastValue=='/' || lastValue=='.' || lastValue=='%')
@@ -585,10 +700,36 @@ public class MainDesignController implements Initializable
                 //System.out.println("Shit: "+lastValue);
 
                 try {
+
                     if(StoreCalculationValue==0)
-                    { BeforeCalValue= Double.parseDouble(SplitString); }
+                    {
+                        if(StoreCalculationValue==0.0 && BeforeCalValue==AfterCalValue)
+                        {
+                            BeforeCalValue=0.0;
+                            System.out.println("BeforeCalValue:  "+BeforeCalValue);
+                        }
+                        else
+                        {
+                            BeforeCalValue= Double.parseDouble(SplitString);
+                            System.out.println("If BeforeCalValue: "+BeforeCalValue);
+                        }
+
+                    }
                     else
-                    { BeforeCalValue=StoreCalculationValue; }
+                    {
+                        if(StoreCalculationValue==0.0 && BeforeCalValue==AfterCalValue)
+                        {
+                            BeforeCalValue=0.0;
+                            System.out.println("BeforeCalValue:  "+BeforeCalValue);
+                        }
+                        else
+                        {
+                            BeforeCalValue=StoreCalculationValue;
+                            System.out.println("else BeforeCalValue: "+BeforeCalValue);
+                        }
+
+                    }
+
 
                     SplitString="";
                 }catch (Exception e)
@@ -631,10 +772,35 @@ public class MainDesignController implements Initializable
             {
                 CheckPO();
                 try {
+
                     if(StoreCalculationValue==0)
-                    { BeforeCalValue= Double.parseDouble(SplitString); }
+                    {
+                        if(StoreCalculationValue==0.0 && BeforeCalValue==AfterCalValue)
+                        {
+                            BeforeCalValue=0.0;
+                            System.out.println("BeforeCalValue:  "+BeforeCalValue);
+                        }
+                        else
+                        {
+                            BeforeCalValue= Double.parseDouble(SplitString);
+                            System.out.println("If BeforeCalValue: "+BeforeCalValue);
+                        }
+
+                    }
                     else
-                    { BeforeCalValue=StoreCalculationValue; }
+                    {
+                        if(StoreCalculationValue==0.0 && BeforeCalValue==AfterCalValue)
+                        {
+                            BeforeCalValue=0.0;
+                            System.out.println("BeforeCalValue:  "+BeforeCalValue);
+                        }
+                        else
+                        {
+                            BeforeCalValue=StoreCalculationValue;
+                            System.out.println("else BeforeCalValue: "+BeforeCalValue);
+                        }
+
+                    }
 
                     //System.out.println("Else ?");
 
@@ -734,17 +900,22 @@ public class MainDesignController implements Initializable
         //System.out.println("conditionForOperator: "+conditionForOperator);
         double splitPartOne= Double.parseDouble(SplitString);
 
-        AfterCalValue=splitPartOne;
+        AfterCalValue=splitPartOne; //Split Done Now Store After Value...
 
         if(conditionForOperator==1)
         {
             StoreCalculationValue= BeforeCalValue+AfterCalValue;
-            System.out.println("1...StoreCalculationValue: "+StoreCalculationValue);
+            System.out.println("+1...StoreCalculationValue: "+StoreCalculationValue);
+            System.out.println("+2...BeforeCalValue: "+BeforeCalValue);
+            System.out.println("+3...AfterCalValue: "+AfterCalValue);
+
         }
         else if(conditionForOperator==2)
         {
             StoreCalculationValue= BeforeCalValue-AfterCalValue;
-            System.out.println("2...StoreCalculationValue: "+StoreCalculationValue);
+            System.out.println("-1...StoreCalculationValue: "+StoreCalculationValue);
+            System.out.println("-2...BeforeCalValue: "+BeforeCalValue);
+            System.out.println("-3...AfterCalValue: "+AfterCalValue);
         }
         else if(conditionForOperator==3)
         {
@@ -816,6 +987,136 @@ public class MainDesignController implements Initializable
             PO2="Don't have any Previous Output";
         }
     }
+
+
+
+    /////////////////////////////////////////////////////////........Converter...........//////////////////////////////////////////////////////////////////////////
+    public void KeyTypeAction(KeyEvent keyTypeAction)
+    {
+        try{
+            convertInput.textProperty().addListener(new ChangeListener<String>() {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                    String newValue) {
+                    if (!newValue.matches("\\d*")) {
+                        convertInput.setText(newValue.replaceAll("[^\\d]", ""));
+                    }
+                }
+            });
+        }catch (Exception e)
+        {
+            System.out.println("Line 950+: "+e.toString());
+        }
+    }
+    public void ConverterButtonActionEvent(ActionEvent event_CBC)
+    {
+        if(event_CBC.getSource()==currencyButton)
+        {
+            CategoryWiseChange("Currency",CurrencyList);
+            //CheckBoXSelect();
+        }
+        else if(event_CBC.getSource()==lengthButton)
+        {
+            CategoryWiseChange("Length",LengthList);
+        }
+        else if(event_CBC.getSource()==areaButton)
+        {
+            CategoryWiseChange("Area",AreaList);
+        }
+        else if(event_CBC.getSource()==volumeButton)
+        {
+            CategoryWiseChange("Volume",VolumeList);
+        }
+        else if(event_CBC.getSource()==speedButton)
+        {
+            CategoryWiseChange("Speed",SpeedList);
+        }
+        else if(event_CBC.getSource()==timeButton)
+        {
+            CategoryWiseChange("Time",TimeList);
+        }
+        else if(event_CBC.getSource()==massButton)
+        {
+            CategoryWiseChange("Mass",MassList);
+        }
+        else if(event_CBC.getSource()==numeralButton)
+        {
+            CategoryWiseChange("Numeral",NumeralList);
+        }
+        else if(event_CBC.getSource()==temperatureButton)
+        {
+            CategoryWiseChange("Temperature",TemperatureList);
+        }
+        else if(event_CBC.getSource()==leftComboBox || event_CBC.getSource()==RightComboBox)
+        {
+            CheckBoXSelect();
+        }
+        else if(event_CBC.getSource()==firstCheckBox)
+        {
+            firstCheckBox.setSelected(true);
+            SecondCheckBox.setSelected(false);
+            firstCheckBox.setStyle("-fx-text-fill: #ff6600;");
+            SecondCheckBox.setStyle("-fx-text-fill: #0a0a0a;");
+        }
+        else if(event_CBC.getSource()==SecondCheckBox)
+        {
+            SecondCheckBox.setSelected(true);
+            firstCheckBox.setSelected(false);
+            firstCheckBox.setStyle("-fx-text-fill: #0a0a0a;");
+            SecondCheckBox.setStyle("-fx-text-fill: #ff6600;");
+
+        }
+//        ////////////////////////////////////////////////
+//        else if(event_CBC.getSource()==converterACButton)
+//        {
+//
+//        }
+//        else if(event_CBC.getSource()==converterButton)
+//        {
+//
+//        }
+//        else if(event_CBC.getSource()==converterCLRButton)
+//        {
+//
+//        }
+
+    }
+
+
+    void CategoryWiseChange(String category, ObservableList<String> categoryList)
+    {
+        //Flip,
+        new Flip(singlePaneFor9Item).play();
+        titleConverter.setText(category+" Converter");
+        leftComboBox.setItems(categoryList);
+        RightComboBox.setItems(categoryList);
+        leftComboBox.setPromptText(categoryList.get(0));
+        RightComboBox.setPromptText(categoryList.get(0));
+    }
+
+    void CheckBoXSelect()
+    {
+        String leftComboValue,RightComboValue;
+        leftComboValue=leftComboBox.getSelectionModel().getSelectedItem();
+        RightComboValue=RightComboBox.getSelectionModel().getSelectedItem();
+        if(leftComboValue==null || RightComboValue==null)
+        {
+            System.out.println("Cool: "+leftComboBox.getItems());
+        }else
+        {
+            firstCheckBox.setText(leftComboValue+" to "+RightComboValue);
+            SecondCheckBox.setText(RightComboValue+" to "+leftComboValue);
+        }
+
+    }
+
+
+
+
+
+
+
+
 
 
 

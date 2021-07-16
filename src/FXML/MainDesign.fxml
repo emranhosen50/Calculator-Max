@@ -51,176 +51,6 @@
       </AnchorPane>
       <AnchorPane layoutX="218.0" prefHeight="521.0" prefWidth="789.0" style="-fx-background-color: #333333;">
          <children>
-            <Pane fx:id="MortgagePane" layoutX="-28.0" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: #13ae63;" />
-            <Pane fx:id="ConverterPane" layoutX="-28.0" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: #fcfcfc; -fx-background-color: #fcfcfc;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-28.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <GridPane layoutX="29.0" layoutY="197.0" prefHeight="267.0" prefWidth="419.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Button fx:id="currencyButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="110.0" text="Currency">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Images/currency.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="lengthButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="110.0" text="Length" GridPane.columnIndex="1">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Images/length.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="areaButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="110.0" text="Area" GridPane.columnIndex="2">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Images/area.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="volumeButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="110.0" text="Volume" GridPane.rowIndex="1">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Images/volume.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="speedButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="110.0" text="Speed" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Images/speed.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="timeButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="110.0" text="Time" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Images/time.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="massButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="110.0" text="Mass" GridPane.rowIndex="2">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Images/mass.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="numeralButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="110.0" text="Numeral" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Images/numeral_system.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="temperatureButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="110.0" text="Temperature" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Images/temperature.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </GridPane>
-                  <Line endX="-101.0" endY="260.0" layoutX="549.0" layoutY="204.0" startX="-100.0" />
-                  <Label layoutX="591.0" layoutY="196.0" text="Currency Converter">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ComboBox layoutX="464.0" layoutY="243.0" prefHeight="25.0" prefWidth="175.0" promptText="United States Dollar" />
-                  <ComboBox layoutX="700.0" layoutY="243.0" prefHeight="25.0" prefWidth="175.0" promptText="Bangladeshi Taka" />
-                  <CheckBox layoutX="464.0" layoutY="283.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="146.0" text="CheckBox" />
-                  <CheckBox layoutX="639.0" layoutY="283.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="153.0" text="CheckBox" />
-                  <TextField layoutX="464.0" layoutY="328.0" prefHeight="50.0" prefWidth="412.0" />
-                  <GridPane alignment="TOP_CENTER" hgap="20.0" layoutX="464.0" layoutY="393.0" prefHeight="40.0" prefWidth="412.0" vgap="10.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Button fx:id="converterACButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" text="AC">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="converterButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="141.0" text="Converter" GridPane.columnIndex="1">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="converterCLRButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="143.0" text="CLR" GridPane.columnIndex="2">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </GridPane>
-                  <Label layoutX="335.0" layoutY="14.0" prefHeight="31.0" prefWidth="221.0" text="DISPLAY OF CONVERTER" textFill="#ff6600">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="25.0" layoutY="82.0" prefHeight="85.0" prefWidth="858.0" style="-fx-background-color: #F6F6F6;" text="567467" />
-               </children></Pane>
             <Pane fx:id="CalculatorPane" layoutX="-28.0" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: #FFFFFF;">
                <children>
                   <Button fx:id="ac" layoutX="230.0" layoutY="230.0" mnemonicParsing="false" onAction="#CalculatorButtonAction" onKeyPressed="#KeyPressAction" prefHeight="50.0" prefWidth="71.0" text="AC">
@@ -444,7 +274,7 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </Button>
-                  <Pane layoutX="14.0" layoutY="54.0" prefHeight="123.0" prefWidth="882.0" style="-fx-background-color: #F6F6F6;">
+                  <Pane fx:id="totalCalculatorView" layoutX="14.0" layoutY="54.0" prefHeight="123.0" prefWidth="882.0" style="-fx-background-color: #F6F6F6;">
                      <padding>
                         <Insets left="10.0" top="10.0" />
                      </padding>
@@ -466,6 +296,192 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
+               </children></Pane>
+            <Pane fx:id="MortgagePane" layoutX="-28.0" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: #FFFFFF;" />
+            <Pane fx:id="ConverterPane" layoutX="-28.0" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: #fcfcfc; -fx-background-color: #fcfcfc;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-28.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <GridPane layoutX="29.0" layoutY="197.0" prefHeight="267.0" prefWidth="419.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="currencyButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#ConverterButtonActionEvent" prefHeight="60.0" prefWidth="110.0" text="Currency">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/currency.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="lengthButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#ConverterButtonActionEvent" prefHeight="60.0" prefWidth="110.0" text="Length" GridPane.columnIndex="1">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/length.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="areaButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#ConverterButtonActionEvent" prefHeight="60.0" prefWidth="110.0" text="Area" GridPane.columnIndex="2">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/area.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="volumeButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#ConverterButtonActionEvent" prefHeight="60.0" prefWidth="110.0" text="Volume" GridPane.rowIndex="1">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/volume.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="speedButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#ConverterButtonActionEvent" prefHeight="60.0" prefWidth="110.0" text="Speed" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/speed.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="timeButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#ConverterButtonActionEvent" prefHeight="60.0" prefWidth="110.0" text="Time" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/time.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="massButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#ConverterButtonActionEvent" prefHeight="60.0" prefWidth="110.0" text="Mass" GridPane.rowIndex="2">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/mass.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="numeralButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#ConverterButtonActionEvent" prefHeight="60.0" prefWidth="110.0" text="Numeral" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/numeral_system.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="temperatureButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#ConverterButtonActionEvent" prefHeight="60.0" prefWidth="110.0" text="Temperature" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/temperature.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </GridPane>
+                  <Line endX="-101.0" endY="260.0" layoutX="549.0" layoutY="204.0" startX="-100.0" />
+                  <Label layoutX="335.0" layoutY="14.0" prefHeight="31.0" prefWidth="221.0" text="DISPLAY OF CONVERTER" textFill="#ff6600">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="25.0" layoutY="82.0" prefHeight="85.0" prefWidth="858.0" style="-fx-background-color: #F6F6F6;" text="567467" />
+                  <Pane fx:id="singlePaneFor9Item" layoutX="452.0" layoutY="191.0" prefHeight="288.0" prefWidth="431.0">
+                     <children>
+                        <Label fx:id="titleConverter" layoutX="132.0" layoutY="1.0" text="Currency Converter">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="RightComboBox" layoutX="231.0" layoutY="44.0" onAction="#ConverterButtonActionEvent" prefHeight="25.0" prefWidth="175.0" promptText="United States Dollar" />
+                        <ComboBox fx:id="leftComboBox" layoutX="14.0" layoutY="44.0" onAction="#ConverterButtonActionEvent" prefHeight="25.0" prefWidth="175.0" promptText="Bangladeshi Taka" />
+                        <CheckBox fx:id="SecondCheckBox" layoutX="227.0" layoutY="93.0" mnemonicParsing="false" onAction="#ConverterButtonActionEvent" prefHeight="26.0" prefWidth="200.0" text="CheckBox">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="firstCheckBox" layoutX="12.0" layoutY="93.0" mnemonicParsing="false" onAction="#ConverterButtonActionEvent" prefHeight="26.0" prefWidth="200.0" text="CheckBox">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </CheckBox>
+                        <TextField fx:id="convertInput" layoutX="14.0" layoutY="143.0" onKeyTyped="#KeyTypeAction" prefHeight="50.0" prefWidth="412.0" promptText="Enter Value">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </TextField>
+                        <GridPane alignment="TOP_CENTER" hgap="20.0" layoutX="12.0" layoutY="209.0" prefHeight="60.0" prefWidth="412.0" vgap="10.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button fx:id="converterACButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#ConverterButtonActionEvent" prefHeight="30.0" prefWidth="143.0" text="AC">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="converterButton" mnemonicParsing="false" onAction="#ConverterButtonActionEvent" prefHeight="30.0" prefWidth="141.0" text="Converter" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="converterCLRButton" mnemonicParsing="false" onAction="#ConverterButtonActionEvent" prefHeight="30.0" prefWidth="138.0" text="CLR" GridPane.columnIndex="2">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </Pane>
                </children></Pane>
          </children>
       </AnchorPane>

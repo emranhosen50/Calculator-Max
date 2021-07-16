@@ -21,6 +21,11 @@
 {
     -fx-background-color : #727272;
 }
+#currencyButton:focused,#lengthButton:focused,#areaButton:focused,#volumeButton:focused,#speedButton:focused,#timeButton:focused,#massButton:focused,#numeralButton:focused,#temperatureButton:focused
+{
+    -fx-background-color : #727272;
+}
+
 
 
 
@@ -64,4 +69,9 @@
 .button:pressed
 {
 -fx-background-color : #8A2314;
+}
+
+.button:focused
+{
+-fx-background-color : #A52916;
 }
