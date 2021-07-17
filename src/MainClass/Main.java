@@ -18,13 +18,13 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        FXMLLoader loader =new FXMLLoader(getClass().getResource("../FXML/MainDesign.fxml"));
+        FXMLLoader loader =new FXMLLoader(getClass().getResource("../FXML/LoginANDSignDesign.fxml"));
         Parent root =loader.load();
         //Parent root = FXMLLoader.load(getClass().getResource("../FXML/MainDesign.fxml"));
         primaryStage.setTitle("Calculator Max");
         Scene scene=new Scene(root);
 
-        MainDesignController mainDesignController= loader.getController();
+        //MainDesignController mainDesignController= loader.getController(); /// before Open.....
 
 //        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 //            @Override
