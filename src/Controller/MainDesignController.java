@@ -95,6 +95,7 @@ public class MainDesignController implements Initializable
         fontSizeRestore();
         //System.out.println("oneTTT: "+oneTTT);
 
+
     }
 
 
@@ -506,6 +507,7 @@ public class MainDesignController implements Initializable
             fontSizeRestore();
             PrintMethod(ValueOne,"Emran");
             OperandStore(Integer.toString(ValueOne));
+            new FadeIn(one).play();
             return;
         }
         else if(keyEvent.getCode().toString().equals("DIGIT2") || keyEvent.getCode().toString().equals("NUMPAD2"))
@@ -514,6 +516,7 @@ public class MainDesignController implements Initializable
             fontSizeRestore();
             PrintMethod(ValueTwo,"Emran");
             OperandStore(Integer.toString(ValueTwo));
+            new FadeIn(two).play();
             return;
         }
         else if(keyEvent.getCode().toString().equals("DIGIT3") || keyEvent.getCode().toString().equals("NUMPAD3"))
@@ -522,6 +525,7 @@ public class MainDesignController implements Initializable
             fontSizeRestore();
             PrintMethod(ValueThree,"Emran");
             OperandStore(Integer.toString(ValueThree));
+            new FadeIn(three).play();
             return;
         }
         else if(keyEvent.getCode().toString().equals("DIGIT4") || keyEvent.getCode().toString().equals("NUMPAD4"))
@@ -530,6 +534,7 @@ public class MainDesignController implements Initializable
             fontSizeRestore();
             PrintMethod(ValueFour,"Emran");
             OperandStore(Integer.toString(ValueFour));
+            new FadeIn(four).play();
             return;
         }
         else if(keyEvent.getCode().toString().equals("DIGIT5") || keyEvent.getCode().toString().equals("NUMPAD5"))
@@ -538,6 +543,7 @@ public class MainDesignController implements Initializable
             fontSizeRestore();
             PrintMethod(ValueFive,"Emran");
             OperandStore(Integer.toString(ValueFive));
+            new FadeIn(five).play();
             return;
         }
         else if(keyEvent.getCode().toString().equals("DIGIT6") || keyEvent.getCode().toString().equals("NUMPAD6"))
@@ -546,6 +552,7 @@ public class MainDesignController implements Initializable
             fontSizeRestore();
             PrintMethod(ValueSix,"Emran");
             OperandStore(Integer.toString(ValueSix));
+            new FadeIn(six).play();
             return;
         }
         else if(keyEvent.getCode().toString().equals("DIGIT7") || keyEvent.getCode().toString().equals("NUMPAD7"))
@@ -554,6 +561,7 @@ public class MainDesignController implements Initializable
             fontSizeRestore();
             PrintMethod(ValueSeven,"Emran");
             OperandStore(Integer.toString(ValueSeven));
+            new FadeIn(seven).play();
             return;
         }
         else if(keyEvent.getCode().toString().equals("DIGIT8") || keyEvent.getCode().toString().equals("NUMPAD8"))
@@ -562,6 +570,7 @@ public class MainDesignController implements Initializable
             fontSizeRestore();
             PrintMethod(ValueEight,"Emran");
             OperandStore(Integer.toString(ValueEight));
+            new FadeIn(eight).play();
             return;
         }
         else if(keyEvent.getCode().toString().equals("DIGIT9") || keyEvent.getCode().toString().equals("NUMPAD9"))
@@ -570,6 +579,7 @@ public class MainDesignController implements Initializable
             fontSizeRestore();
             PrintMethod(ValueNine,"Emran");
             OperandStore(Integer.toString(ValueNine));
+            new FadeIn(nine).play();
             return;
         }
         else if(keyEvent.getCode().toString().equals("DIGIT0") || keyEvent.getCode().toString().equals("NUMPAD0"))
@@ -578,6 +588,7 @@ public class MainDesignController implements Initializable
             fontSizeRestore();
             PrintMethod(ValueZero,"Emran");
             OperandStore(Integer.toString(ValueZero));
+            new FadeIn(zero).play();
             return;
         }
         else if(keyEvent.getCode().toString().equals("DECIMAL"))
@@ -588,11 +599,13 @@ public class MainDesignController implements Initializable
             {
                 PrintMethod(-1,"0.");
                 OperandStore("0.");
+                new FadeIn(full_stop).play();
             }
             else
             {
                 PrintMethod(-1,".");
                 OperandStore(".");
+                new FadeIn(full_stop).play();
             }
             return;
         }//////////
@@ -607,6 +620,7 @@ public class MainDesignController implements Initializable
             output.setFont(new Font("Serif", 25));
             userValue.setText(userValue.getText());
             output.setText(output.getText());
+            new FadeIn(equal).play();
             return;
         }
 
@@ -631,6 +645,7 @@ public class MainDesignController implements Initializable
                 output.setTextFill(Color.web("#ff6600", 1));
                 output.setText(PO2);
                 userValue.setText("");
+                new FadeIn(x).play();
                 return;
             }
             else
@@ -641,6 +656,7 @@ public class MainDesignController implements Initializable
                     output.setTextFill(Color.web("#ff6600", 1));
                     output.setText(PO2);
                     userValue.setText("");
+                    new FadeIn(one).play();
                     return;
                 }
                 else
@@ -651,6 +667,7 @@ public class MainDesignController implements Initializable
                     output.setTextFill(Color.web("#ff6600", 1));
                     userValue.setText(PO1);
                     output.setText("=> It’s just an (Previous Output)             "+PO2);
+                    new FadeIn(one).play();
                     return;
                 }
 
@@ -676,6 +693,7 @@ public class MainDesignController implements Initializable
             userValue.setText("");
             output.setText("");
             SplitString="";
+            new FadeIn(ac).play();
             return;
         }
 
@@ -743,6 +761,7 @@ public class MainDesignController implements Initializable
                     fontSizeRestore();
                     conditionForOperator=1;
                     PrintMethod(-1,ValuePlus);
+                    new FadeIn(plus).play();
                     return;
                 }
                 else if(keyEvent.getCode().toString().equals("SUBTRACT"))
@@ -750,6 +769,7 @@ public class MainDesignController implements Initializable
                     fontSizeRestore();
                     conditionForOperator=2;
                     PrintMethod(-1,ValueSubtraction);
+                    new FadeIn(subtraction).play();
                     return;
                 }
                 else if(keyEvent.getCode().toString().equals("MULTIPLY"))
@@ -757,6 +777,7 @@ public class MainDesignController implements Initializable
                     fontSizeRestore();
                     conditionForOperator=3;
                     PrintMethod(-1,ValueMulti);
+                    new FadeIn(multi).play();
                     return;
                 }
                 else if(keyEvent.getCode().toString().equals("DIVIDE"))
@@ -764,6 +785,7 @@ public class MainDesignController implements Initializable
                     fontSizeRestore();
                     conditionForOperator=4;
                     PrintMethod(-1,ValueSlash);
+                    new FadeIn(slash).play();
                     return;
                 }
 
@@ -811,6 +833,7 @@ public class MainDesignController implements Initializable
                         fontSizeRestore();
                         conditionForOperator=1;
                         PrintMethod(-1,ValuePlus);
+                        new FadeIn(plus).play();
                         return;
                     }
                     else if(keyEvent.getCode().toString().equals("SUBTRACT"))
@@ -818,6 +841,7 @@ public class MainDesignController implements Initializable
                         fontSizeRestore();
                         conditionForOperator=2;
                         PrintMethod(-1,ValueSubtraction);
+                        new FadeIn(subtraction).play();
                         return;
                     }
                     else if(keyEvent.getCode().toString().equals("MULTIPLY"))
@@ -825,6 +849,7 @@ public class MainDesignController implements Initializable
                         fontSizeRestore();
                         conditionForOperator=3;
                         PrintMethod(-1,ValueMulti);
+                        new FadeIn(multi).play();
                         return;
                     }
                     else if(keyEvent.getCode().toString().equals("DIVIDE"))
@@ -832,6 +857,7 @@ public class MainDesignController implements Initializable
                         fontSizeRestore();
                         conditionForOperator=4;
                         PrintMethod(-1,ValueSlash);
+                        new FadeIn(slash).play();
                         return;
                     }
                 }catch (Exception e)
