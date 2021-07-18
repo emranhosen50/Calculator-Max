@@ -15,9 +15,33 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginANDSignDesign">
+<AnchorPane fx:id="AnchorPane1" prefHeight="645.0" prefWidth="1095.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginANDSignDesign">
    <children>
-      <Pane fx:id="SignInPaneLeft" prefHeight="600.0" prefWidth="550.0" style="-fx-background-color: #FFFFFF;">
+      <Pane onMouseDragged="#mouseDrag" onMousePressed="#mousePressed" prefHeight="45.0" prefWidth="1100.0" style="-fx-background-color: #1B3237;">
+         <children>
+            <Label fx:id="close" layoutX="1057.0" layoutY="4.0" onMouseClicked="#MouseClick" text="X" textFill="#ee0404">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="minimize" layoutX="1027.0" layoutY="4.0" onMouseClicked="#MouseClick" prefHeight="38.0" prefWidth="17.0" text="-" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="TitleText" layoutX="79.0" layoutY="10.0" prefHeight="26.0" prefWidth="97.0" text="Sign In" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="20.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/max_cal.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="SignInPaneLeft" layoutY="45.0" prefHeight="600.0" prefWidth="550.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <Pane fx:id="signInPaneButton" prefHeight="600.0" prefWidth="550.0" style="-fx-background-color: #FF6600;">
                <children>
@@ -40,6 +64,11 @@
                </children></Pane>
             <Pane fx:id="signInPaneScreen" prefHeight="600.0" prefWidth="550.0" style="-fx-background-color: #FFFFFF;">
                <children>
+                  <Label fx:id="SignInWrongInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="518.0" prefHeight="22.0" prefWidth="329.0" textFill="RED">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
                   <Label layoutX="78.0" layoutY="91.0" text="SIGN IN TO MAX CALCULATOR" textFill="#ff6600">
                      <font>
                         <Font name="System Bold" size="25.0" />
@@ -73,16 +102,16 @@
                         </ImageView>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="78.0" layoutY="230.0" prefHeight="148.0" prefWidth="366.0">
+                  <GridPane layoutX="78.0" layoutY="230.0" prefHeight="128.0" prefWidth="366.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField prefHeight="48.0" prefWidth="366.0" promptText="Email">
+                        <TextField fx:id="SignInEmail" prefHeight="48.0" prefWidth="366.0" promptText="Email">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -90,7 +119,7 @@
                               <Insets bottom="10.0" left="40.0" right="10.0" top="10.0" />
                            </padding>
                         </TextField>
-                        <PasswordField prefHeight="48.0" prefWidth="366.0" promptText="Password" GridPane.rowIndex="1">
+                        <PasswordField fx:id="SignInPass" prefHeight="48.0" prefWidth="366.0" promptText="Password" GridPane.rowIndex="1">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -116,28 +145,28 @@
                         </ImageView>
                      </children>
                   </GridPane>
-                  <Label layoutX="185.0" layoutY="408.0" text="Forgot your password?">
+                  <Label fx:id="forgotPassLabel" layoutX="185.0" layoutY="373.0" text="Forgot your password?">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Line endX="100.0" layoutX="261.0" layoutY="432.0" opacity="0.48" startX="-100.0" />
-                  <Button layoutX="200.0" layoutY="465.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="122.0" text="SIGN IN" />
+                  <Line endX="100.0" layoutX="261.0" layoutY="400.0" opacity="0.48" startX="-100.0" />
+                  <Button fx:id="SignInButton" layoutX="200.0" layoutY="450.0" mnemonicParsing="false" onAction="#ActionEvent" prefHeight="36.0" prefWidth="122.0" text="SIGN IN" />
                </children>
             </Pane>
          </children>
       </Pane>
-      <Pane fx:id="SignInPaneRight" layoutX="550.0" prefHeight="600.0" prefWidth="550.0" style="-fx-background-color: #FF6600;">
+      <Pane fx:id="SignInPaneRight" layoutX="550.0" layoutY="45.0" prefHeight="600.0" prefWidth="550.0" style="-fx-background-color: #FF6600;">
          <children>
             <Pane fx:id="signUpPaneScreen" prefHeight="600.0" prefWidth="550.0" style="-fx-background-color: #FFFFFF;">
                <children>
-                  <Label layoutX="77.0" layoutY="90.0" text="SIGN UP TO MAX CALCULATOR" textFill="#ff6600">
+                  <Label layoutX="78.0" layoutY="91.0" text="SIGN UP TO MAX CALCULATOR" textFill="#ff6600">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
                   </Label>
-                  <Label layoutX="185.0" layoutY="177.0" opacity="0.73" text="or use tour email account." />
-                  <GridPane alignment="CENTER" focusTraversable="true" layoutX="199.0" layoutY="143.0" prefHeight="28.0" prefWidth="122.0">
+                  <Label layoutX="192.0" layoutY="180.0" opacity="0.73" text="or use tour email account." />
+                  <GridPane alignment="CENTER" focusTraversable="true" layoutX="200.0" layoutY="145.0" prefHeight="28.0" prefWidth="122.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -164,7 +193,7 @@
                         </ImageView>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="89.0" layoutY="241.0" prefHeight="181.0" prefWidth="329.0">
+                  <GridPane layoutX="78.0" layoutY="230.0" prefHeight="181.0" prefWidth="329.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                      </columnConstraints>
@@ -174,7 +203,7 @@
                         <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <TextField prefHeight="48.0" prefWidth="366.0" promptText="Email" GridPane.rowIndex="1">
+                        <TextField fx:id="SignUpEmail" prefHeight="48.0" prefWidth="366.0" promptText="Email" GridPane.rowIndex="1">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -182,7 +211,7 @@
                               <Insets bottom="10.0" left="40.0" right="10.0" top="10.0" />
                            </padding>
                         </TextField>
-                        <PasswordField prefHeight="48.0" prefWidth="321.0" promptText="Password" GridPane.rowIndex="2">
+                        <PasswordField fx:id="SignUpPass" prefHeight="48.0" prefWidth="321.0" promptText="Password" GridPane.rowIndex="2">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -190,7 +219,7 @@
                               <Insets bottom="10.0" left="40.0" right="10.0" top="10.0" />
                            </padding>
                         </PasswordField>
-                        <TextField prefHeight="48.0" prefWidth="366.0" promptText="Name">
+                        <TextField fx:id="SignUpName" prefHeight="48.0" prefWidth="366.0" promptText="Name">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -224,7 +253,12 @@
                         </ImageView>
                      </children>
                   </GridPane>
-                  <Button layoutX="214.0" layoutY="445.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="122.0" text="SIGN IN" />
+                  <Button fx:id="SignUpButton" layoutX="200.0" layoutY="450.0" mnemonicParsing="false" onAction="#ActionEvent" prefHeight="36.0" prefWidth="122.0" text="SIGN UP" />
+                  <Label fx:id="SignUpWrongInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="518.0" prefHeight="22.0" prefWidth="329.0" textFill="RED">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane fx:id="signUpPaneButton" prefHeight="600.0" prefWidth="550.0" style="-fx-background-color: #FF6600;">

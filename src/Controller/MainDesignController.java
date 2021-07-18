@@ -8,11 +8,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.Formatter;
@@ -88,6 +91,10 @@ public class MainDesignController implements Initializable
             "Liter", "Milliliter", "Imperial gallon", "imp. quart", "Imperial pint", "Imperial cup", "fluid ounce", "Imperial tablespoon", "Imperial teaspoon", "Cubic foot", "Cubic inch" );
     ObservableList<String> NumeralList= FXCollections.observableArrayList("Binary" ,"Octal" ,"Decimal", "Hexadecimal" );
     ObservableList<String> MassList= FXCollections.observableArrayList("tonne", "Kilogram", "Gram", "Milligram", "Microgram", "Imperial ton", "US ton", "Stone", "Pound", "Ounce" );
+
+    double mouseX,mouseY;
+    @FXML
+    Label close,minimize;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -1134,6 +1141,36 @@ public class MainDesignController implements Initializable
             SecondCheckBox.setText(RightComboValue+" to "+leftComboValue);
         }
 
+    }
+
+
+
+    public void MouseClick(MouseEvent mouseEvent)
+    {
+        if(mouseEvent.getSource()==close)
+        {
+            Stage stage=(Stage) close.getScene().getWindow();
+            stage.close();
+            //System.exit(0);
+        }
+        else if(mouseEvent.getSource()==minimize)
+        {
+            Stage stage=(Stage) minimize.getScene().getWindow();
+            stage.setIconified(true);
+        }
+    }//MouseClick
+
+    public void mouseDrag(MouseEvent event) {
+        //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage=(Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setX(event.getScreenX()-mouseX);
+        stage.setY(event.getScreenY()-mouseY);
+
+    }
+    public void mousePressed(MouseEvent event) {
+        mouseX =event.getSceneX();
+        mouseY=event.getSceneY();
+        //System.out.println("mouseX:"+mouseX+"   "+"mouseY:"+mouseY);
     }
 
 

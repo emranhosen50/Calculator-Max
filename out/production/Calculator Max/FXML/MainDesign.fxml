@@ -17,14 +17,10 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainDesignController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainDesignController">
    <children>
-      <AnchorPane opacity="0.94" prefHeight="600.0" prefWidth="49.0" style="-fx-background-color: #1B3237;">
-         <effect>
-            <DropShadow height="38.79" radius="11.4825" spread="0.32" width="9.14" />
-         </effect>
-      </AnchorPane>
-      <AnchorPane layoutX="46.0" prefHeight="600.0" prefWidth="144.0" style="-fx-background-color: #FF6600;">
+      <AnchorPane layoutY="45.0" opacity="0.94" prefHeight="600.0" prefWidth="49.0" style="-fx-background-color: #1B3237;" />
+      <AnchorPane layoutX="46.0" layoutY="45.0" prefHeight="600.0" prefWidth="144.0" style="-fx-background-color: #FF6600;">
          <children>
             <Button fx:id="CalculatorButton" alignment="CENTER" layoutY="196.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ActionEvent" prefHeight="34.0" prefWidth="146.0" styleClass="buttonCSS" text="Calculator" textAlignment="RIGHT" textOverrun="CENTER_WORD_ELLIPSIS" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="196.0">
                <padding>
@@ -49,7 +45,7 @@
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="28.0" layoutY="119.0" text="CALCULATOR" textAlignment="CENTER" textFill="#ebebeb" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="218.0" prefHeight="521.0" prefWidth="789.0" style="-fx-background-color: #333333;">
+      <AnchorPane layoutX="218.0" layoutY="45.0" prefHeight="521.0" prefWidth="789.0" style="-fx-background-color: #333333;">
          <children>
             <Pane fx:id="CalculatorPane" layoutX="-28.0" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: #FFFFFF;">
                <children>
@@ -485,5 +481,29 @@
                </children></Pane>
          </children>
       </AnchorPane>
+      <Pane onMouseDragged="#mouseDrag" onMousePressed="#mousePressed" prefHeight="45.0" prefWidth="1100.0" style="-fx-background-color: #1B3237;">
+         <children>
+            <Label fx:id="close" layoutX="1057.0" layoutY="4.0" onMouseClicked="#MouseClick" text="X" textFill="#ee0404">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="20.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/max_cal.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="TitleText" layoutX="80.0" layoutY="10.0" prefHeight="26.0" prefWidth="97.0" text="Sign In" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label fx:id="minimize" layoutX="1027.0" layoutY="4.0" onMouseClicked="#MouseClick" prefHeight="38.0" prefWidth="17.0" text="-" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
