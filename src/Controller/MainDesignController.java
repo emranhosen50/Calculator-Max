@@ -94,15 +94,12 @@ public class MainDesignController implements Initializable
 
     double mouseX,mouseY;
     @FXML
-    Label close,minimize;
+    Label close,minimize,TitleText;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //x.setDisable(true);
+        TitleText.setText("Max Calculator");
         fontSizeRestore();
-        //System.out.println("oneTTT: "+oneTTT);
-
-
     }
 
 
@@ -115,6 +112,7 @@ public class MainDesignController implements Initializable
             ConverterPane.toBack();
             MortgagePane.toBack();
             new Flip(totalCalculatorView).play();
+            TitleText.setText("Max Calculator");
 
         }
         else if(actionEvent.getSource()==ConverterButton)
@@ -122,6 +120,7 @@ public class MainDesignController implements Initializable
             ConverterPane.toFront();
             CalculatorPane.toBack();
             MortgagePane.toBack();
+            TitleText.setText("Converter");
             AnimationEffect(currencyButton,lengthButton,areaButton,volumeButton,speedButton,timeButton,massButton,numeralButton,temperatureButton);
         }
         else if(actionEvent.getSource()==MortgageButton)
@@ -129,8 +128,10 @@ public class MainDesignController implements Initializable
             MortgagePane.toFront();
             ConverterPane.toBack();
             CalculatorPane.toBack();
+            TitleText.setText("Mortgage");
         }
-    }
+    }//ActionEvent
+
     void AnimationEffect(Button currencyButton, Button lengthButton, Button areaButton, Button volumeButton, Button speedButton, Button timeButton, Button massButton, Button numeralButton, Button temperatureButton)
     {
         new Wobble(currencyButton).play();
@@ -142,7 +143,7 @@ public class MainDesignController implements Initializable
         new Wobble(massButton).play();
         new Wobble(numeralButton).play();
         new Wobble(temperatureButton).play();
-    }
+    }//AnimationEffect
 
     public void CalculatorButtonAction(ActionEvent actionEventForCB)
     {
@@ -500,7 +501,7 @@ public class MainDesignController implements Initializable
         }
 
 
-    }
+    }//CalculatorButtonAction
 
     public void KeyPressAction(KeyEvent keyEvent)
     {
@@ -883,7 +884,7 @@ public class MainDesignController implements Initializable
 
 
 
-    }
+    }//KeyPressAction
 
     public void PrintMethod(int valueI,String valueS)
     {
@@ -917,7 +918,7 @@ public class MainDesignController implements Initializable
             }
 
         }
-    }
+    }//PrintMethod
 
     public void OperandStore(String Value)
     {
@@ -926,7 +927,7 @@ public class MainDesignController implements Initializable
         calculationMethod();
         //calculationMethod(SplitString,PublicOperator);
         //return;
-    }
+    }//OperandStore
 
     public void calculationMethod()
     {
@@ -979,13 +980,13 @@ public class MainDesignController implements Initializable
 //        else{ setOutput(formatter.toString()); }
 
 
-    }
+    }//calculationMethod
 
     public void fontSizeRestore()
     {
         userValue.setFont(new Font("Serif",19));
         output.setFont(new Font("Serif",19));
-    }
+    }//fontSizeRestore
 
     private static String removeLastChar(String str) {
         return str.substring(0, str.length() - 1);
@@ -1002,7 +1003,7 @@ public class MainDesignController implements Initializable
             System.out.println("Error E2H");
             return 'A';
         }
-    }
+    }//getLastValue
 
     public void setOutput(String output1)
     {
@@ -1019,7 +1020,7 @@ public class MainDesignController implements Initializable
             PO1="Don't have any Previous Output";
             PO2="Don't have any Previous Output";
         }
-    }
+    }//CheckPO
 
 
 
@@ -1040,7 +1041,8 @@ public class MainDesignController implements Initializable
         {
             System.out.println("Line 950+: "+e.toString());
         }
-    }
+    }//KeyTypeAction
+
     public void ConverterButtonActionEvent(ActionEvent event_CBC)
     {
         if(event_CBC.getSource()==currencyButton)
@@ -1113,7 +1115,7 @@ public class MainDesignController implements Initializable
 //
 //        }
 
-    }
+    }//ConverterButtonActionEvent
 
 
     void CategoryWiseChange(String category, ObservableList<String> categoryList)
@@ -1125,7 +1127,7 @@ public class MainDesignController implements Initializable
         RightComboBox.setItems(categoryList);
         leftComboBox.setPromptText(categoryList.get(0));
         RightComboBox.setPromptText(categoryList.get(0));
-    }
+    }//CategoryWiseChange
 
     void CheckBoXSelect()
     {
@@ -1141,10 +1143,11 @@ public class MainDesignController implements Initializable
             SecondCheckBox.setText(RightComboValue+" to "+leftComboValue);
         }
 
-    }
+    }//CheckBoXSelect
 
 
 
+    //Title Bar
     public void MouseClick(MouseEvent mouseEvent)
     {
         if(mouseEvent.getSource()==close)
@@ -1159,7 +1162,6 @@ public class MainDesignController implements Initializable
             stage.setIconified(true);
         }
     }//MouseClick
-
     public void mouseDrag(MouseEvent event) {
         //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Stage stage=(Stage) ((Node)event.getSource()).getScene().getWindow();

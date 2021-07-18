@@ -15,8 +15,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         primaryStage.initStyle(StageStyle.UNDECORATED);
-        //FXMLLoader loader =new FXMLLoader(getClass().getResource("../FXML/LoginANDSignDesign.fxml"));
-        FXMLLoader loader =new FXMLLoader(getClass().getResource("../FXML/MainDesign.fxml"));
+        FXMLLoader loader =new FXMLLoader(getClass().getResource("../FXML/LoginANDSignDesign.fxml"));
+        //FXMLLoader loader =new FXMLLoader(getClass().getResource("../FXML/MainDesign.fxml"));
         Parent root =loader.load();
         //Parent root = FXMLLoader.load(getClass().getResource("../FXML/MainDesign.fxml"));
         primaryStage.setTitle("Calculator Max");

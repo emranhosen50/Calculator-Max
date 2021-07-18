@@ -2,9 +2,13 @@ package Controller;
 
 import MainClass.ConnectMySQL;
 import animatefx.animation.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -15,6 +19,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -104,6 +109,7 @@ public class LoginANDSignDesign implements Initializable {
         }
         else if(actionEvent.getSource()==SignInButton)
         {
+            MainFrame(actionEvent);
             String getEmail,getPass;
             getEmail=SignInEmail.getText(); getPass=SignInPass.getText();
             if(getEmail.isEmpty() || getPass.isEmpty())
@@ -182,7 +188,20 @@ public class LoginANDSignDesign implements Initializable {
         }
 
     }//SignInMethod
+    public void MainFrame(ActionEvent event)
+    {
+        Stage stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
 
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../FXML/MainDesign.fxml"));
+            Scene scene=new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("../CSS/TotalCSSDesign.css").toExternalForm());
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 

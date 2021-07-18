@@ -493,7 +493,7 @@
                   <Image url="@../Images/max_cal.png" />
                </image>
             </ImageView>
-            <Label fx:id="TitleText" layoutX="80.0" layoutY="10.0" prefHeight="26.0" prefWidth="97.0" text="Sign In" textFill="WHITE">
+            <Label fx:id="TitleText" layoutX="80.0" layoutY="10.0" prefHeight="26.0" prefWidth="184.0" text="Sign In" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
