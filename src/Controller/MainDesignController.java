@@ -1,5 +1,6 @@
 package Controller;
 
+import MainClass.ConnectMySQL;
 import animatefx.animation.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -7,8 +8,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -17,8 +21,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.util.Formatter;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -95,10 +102,16 @@ public class MainDesignController implements Initializable
     double mouseX,mouseY;
     @FXML
     Label close,minimize,TitleText;
+    @FXML
+    Button logOut;
+
+    ConnectMySQL Con=new ConnectMySQL(); //Public SQLDatabase Connection
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Con.createConnection();
         TitleText.setText("Max Calculator");
+        CalculatorPane.toFront();
         fontSizeRestore();
     }
 
@@ -111,7 +124,7 @@ public class MainDesignController implements Initializable
             CalculatorPane.toFront();
             ConverterPane.toBack();
             MortgagePane.toBack();
-            new Flip(totalCalculatorView).play();
+            new Shake(totalCalculatorView).play();
             TitleText.setText("Max Calculator");
 
         }
@@ -129,6 +142,10 @@ public class MainDesignController implements Initializable
             ConverterPane.toBack();
             CalculatorPane.toBack();
             TitleText.setText("Mortgage");
+        }
+        else if(actionEvent.getSource()==logOut)
+        {
+            LogOutMethod(actionEvent);
         }
     }//ActionEvent
 
@@ -1022,6 +1039,33 @@ public class MainDesignController implements Initializable
         }
     }//CheckPO
 
+    private void LogOutMethod(ActionEvent event)
+    {
+        Stage stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../FXML/LoginANDSignDesign.fxml")));
+            Scene scene=new Scene(root);
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("../CSS/TotalCSSDesign.css")).toExternalForm());
+            stage.setScene(scene);
+            new FadeIn(root).play(); //FadeIn,
+            stage.show();
+            DatabaseLoginInfoRemove();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }//LogOutMethod
+
+    private void DatabaseLoginInfoRemove() {
+        try {
+            PreparedStatement stmt1 = Con.con.prepareStatement("DELETE FROM login_info WHERE Code=1;");
+            stmt1.executeUpdate();
+            stmt1.close();
+        }catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+    }
 
 
     /////////////////////////////////////////////////////////........Converter...........//////////////////////////////////////////////////////////////////////////

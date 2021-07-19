@@ -109,7 +109,7 @@ public class LoginANDSignDesign implements Initializable {
         }
         else if(actionEvent.getSource()==SignInButton)
         {
-            MainFrame(actionEvent);
+            //MainFrame(actionEvent);
             String getEmail,getPass;
             getEmail=SignInEmail.getText(); getPass=SignInPass.getText();
             if(getEmail.isEmpty() || getPass.isEmpty())
@@ -118,7 +118,7 @@ public class LoginANDSignDesign implements Initializable {
             }
             else
             {
-                SignInMethod(getEmail,getPass);
+                SignInMethod(getEmail,getPass,actionEvent);
             }
         }
 
@@ -161,7 +161,7 @@ public class LoginANDSignDesign implements Initializable {
         }
     }//SignUpMethod
 
-    public void SignInMethod(String setEmail, String setPass)
+    public void SignInMethod(String setEmail, String setPass,ActionEvent actionEvent)
     {
         String DBName,DBEmail,DBPassword;
         try {
@@ -177,6 +177,14 @@ public class LoginANDSignDesign implements Initializable {
                     System.out.println("Login successful "+DBName);
                     SignInWrongInfo.setText("Login successful "+DBName);
                     SignInEmail.setText(""); SignInPass.setText("");
+                    //Insert Login Information
+                    PreparedStatement Pstmt = Con.con.prepareStatement("INSERT INTO login_info VALUES( ?,? ) ");
+                    Pstmt.setString(1,"1");
+                    Pstmt.setString(2,DBEmail);
+                    Pstmt.execute();
+                    Pstmt.close();
+                    //Insert Login Information
+                    MainFrame(actionEvent);
                     return;
                 }
             }
@@ -188,6 +196,7 @@ public class LoginANDSignDesign implements Initializable {
         }
 
     }//SignInMethod
+
     public void MainFrame(ActionEvent event)
     {
         Stage stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -197,11 +206,12 @@ public class LoginANDSignDesign implements Initializable {
             Scene scene=new Scene(root);
             scene.getStylesheets().add(getClass().getResource("../CSS/TotalCSSDesign.css").toExternalForm());
             stage.setScene(scene);
+            new FadeIn(root).play(); //FadeIn,
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }//MainFrame
 
 
 
