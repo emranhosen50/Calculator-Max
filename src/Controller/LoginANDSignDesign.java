@@ -156,7 +156,10 @@ public class LoginANDSignDesign implements Initializable {
         }
         catch(SQLException ex)
         {
-            SignUpWrongInfo.setText("You have already signUp !");
+            if(ex.getMessage().equals("Duplicate entry '"+setEmail+"' for key 'signup_info.PRIMARY'"))
+            {
+                SignUpWrongInfo.setText("You have already signUp !");
+            }
             //SignUpWrongInfo.setText(ex.getMessage());
         }
     }//SignUpMethod
@@ -193,6 +196,7 @@ public class LoginANDSignDesign implements Initializable {
         }catch (SQLException ex)
         {
             SignInWrongInfo.setText(ex.getMessage());
+            System.out.println("SignIn: "+ex.getMessage());
         }
 
     }//SignInMethod

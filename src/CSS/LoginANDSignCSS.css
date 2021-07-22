@@ -1,0 +1,81 @@
+/*Sign In and Sign Up Button design*/
+#SignInButton,#SignUpButton
+{
+    -fx-background-color : #FF6600;
+    -fx-text-fill:#ffffff;
+}
+#SignInButton:hover,#SignUpButton:hover
+{
+    -fx-background-color : #DE3306;
+    -fx-text-fill:#ffffff;
+}
+#minimize:pressed,#SignUpButton:pressed
+{
+    -fx-background-color : #A42903;
+    -fx-text-fill:#ffffff;
+}
+
+/*Forgot Password Effect*/
+#forgotPassLabel
+{
+    -fx-text-fill: #535353;
+}
+#forgotPassLabel:hover
+{
+    -fx-text-fill: #CB331B;
+    -fx-font-weight:bold;
+}
+#forgotPassLabel:pressed
+{
+    -fx-text-fill: #AC2E1A;
+    -fx-font-weight:bold;
+}
+/*Forgot Password Effect*/
+
+#SignUpButtonInPane,#SignInButtonInPane
+{
+    -fx-border-width:1.5px;
+    -fx-border-style:solid;
+    -fx-border-color:#FFFFFF;
+    -fx-background-color : rgba(76, 175, 80, 0.0);
+
+    -fx-border-radius:50px;
+    -fx-moz-border-radius:50px;
+    -fx-webkit-border-radius:50px;
+    -fx-text-fill:#ffffff;
+}
+/*  */
+#SignUpButtonInPane:hover,#SignInButtonInPane:hover
+{
+    -fx-border-color:#00FFF7;
+    -fx-text-fill:#00FFF7;
+
+}
+#SignUpButtonInPane:pressed,#SignInButtonInPane:pressed
+{
+    -fx-border-color:#FC4810;
+    -fx-text-fill:#FC4810;
+}
+
+/*TitleBar Close & Min*/
+#close
+{
+    -fx-text-fill: #FFB14B;
+}
+#close:hover
+{
+    -fx-text-fill: #FF0404;
+}
+#close:pressed
+{
+    -fx-text-fill: #BF0000;
+}
+#minimize:hover
+{
+    -fx-text-fill: #11FFC6;
+}
+#minimize:pressed
+{
+    -fx-text-fill: #179B7B;
+}
+/*TitleBar Close & Min*/

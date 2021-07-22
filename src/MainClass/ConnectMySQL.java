@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class ConnectMySQL 
 {   
-    public Connection con;
+    public Connection con; //
     public void createConnection()
     {
         try {

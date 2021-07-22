@@ -35,7 +35,7 @@ public class Main extends Application {
             Parent root =loader.load();
             primaryStage.setTitle("Calculator Max");
             Scene scene=new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("../CSS/TotalCSSDesign.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("../CSS/LoginANDSignCSS.css").toExternalForm());
             primaryStage.setScene(scene);
             primaryStage.show();
         }

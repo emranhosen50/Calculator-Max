@@ -2,6 +2,7 @@ package Controller;
 
 import MainClass.ConnectMySQL;
 import animatefx.animation.*;
+import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -16,10 +17,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.net.URL;
@@ -54,7 +58,7 @@ public class MainDesignController implements Initializable
     TextField convertInput;
 
     @FXML
-    Label titleConverter;
+    Label titleConverter,ConvertDisplay;
 
     @FXML
     Pane singlePaneFor9Item;
@@ -75,6 +79,9 @@ public class MainDesignController implements Initializable
     //public String publicKeyBoardValue="Emran";
     public int conditionForOperator;
     String PO1="Don't have any Previous Output",PO2="Don't have any Previous Output";
+    ObservableList<String> GlobalCategoryList;
+    String leftComboValue,RightComboValue;
+    boolean leftOrRight=true;
 
     /////////////////////////////
     ObservableList<String> CurrencyList= FXCollections.observableArrayList( "Afghan Afghani", "Albanian Lek", "Algerian Dinar", "Angolan Kwanza", "Argentine Peso"," Armenian Dram", "Aruban Florinm",
@@ -103,7 +110,12 @@ public class MainDesignController implements Initializable
     @FXML
     Label close,minimize,TitleText;
     @FXML
-    Button logOut;
+    Button logOut,About;
+
+    @FXML
+    private Button menu;
+    @FXML
+    private AnchorPane drawer;
 
     ConnectMySQL Con=new ConnectMySQL(); //Public SQLDatabase Connection
 
@@ -113,8 +125,38 @@ public class MainDesignController implements Initializable
         TitleText.setText("Max Calculator");
         CalculatorPane.toFront();
         fontSizeRestore();
-    }
+        drawerAction();
 
+
+        ////////////////////////////////
+        titleConverter.setText("Currency"+" Converter");
+        leftComboBox.setItems(CurrencyList);
+        RightComboBox.setItems(CurrencyList);
+        leftComboBox.setPromptText(CurrencyList.get(0));
+        RightComboBox.setPromptText(CurrencyList.get(0));
+
+        firstCheckBox.setText(CurrencyList.get(0)+" to "+CurrencyList.get(0));
+        SecondCheckBox.setText(CurrencyList.get(0)+" to "+CurrencyList.get(0));
+        GlobalCategoryList=CurrencyList;
+
+        firstCheckBox.setSelected(true);
+        firstCheckBox.setStyle("-fx-text-fill: #ff6600;");
+
+    }
+    private void drawerAction() {
+
+        TranslateTransition openNav = new TranslateTransition(new Duration(350), drawer);
+        openNav.setToX(0);
+        TranslateTransition closeNav = new TranslateTransition(new Duration(350), drawer);
+        menu.setOnAction((ActionEvent evt) -> {
+            if (drawer.getTranslateX() != 0) {
+                openNav.play();
+            } else {
+                closeNav.setToX(-(drawer.getWidth()));
+                closeNav.play();
+            }
+        });
+    }
 
 
     public void ActionEvent(ActionEvent actionEvent)
@@ -142,6 +184,7 @@ public class MainDesignController implements Initializable
             ConverterPane.toBack();
             CalculatorPane.toBack();
             TitleText.setText("Mortgage");
+
         }
         else if(actionEvent.getSource()==logOut)
         {
@@ -326,6 +369,8 @@ public class MainDesignController implements Initializable
             userValue.setText("");
             output.setText("");
             SplitString="";
+            lastValue='A';
+            System.out.println("CLEAR\n\n\n");
             return;
         }
 
@@ -341,7 +386,7 @@ public class MainDesignController implements Initializable
                 //When Already add any Operator then user again push to change this .. then this Function will be work
                 String RemoveValue=removeLastChar(userValue.getText());
                 //System.out.println("RemoveValue :"+RemoveValue);
-
+                System.out.println("subtraction  Else Login 2");
                 userValue.setText(RemoveValue);
 
 
@@ -393,10 +438,16 @@ public class MainDesignController implements Initializable
                 }
                 else if(actionEventForCB.getSource()==subtraction)
                 {
+                    if(StoreCalculationValue==0)
+                    {
+                        BeforeCalValue=StoreCalculationValue;
+                        System.out.println("Yes");
+                    }
                     fontSizeRestore();
                     conditionForOperator=2;
                     PrintMethod(-1,ValueSubtraction);
                     return;
+
                 }
                 else if(actionEventForCB.getSource()==multi)
                 {
@@ -426,6 +477,7 @@ public class MainDesignController implements Initializable
             }
             else
             {
+                System.out.println("subtraction  Else Login 3");
                 CheckPO();
                 try {
 
@@ -472,6 +524,11 @@ public class MainDesignController implements Initializable
                     }
                     else if(actionEventForCB.getSource()==subtraction)
                     {
+                        if(StoreCalculationValue==0)
+                        {
+                            BeforeCalValue=StoreCalculationValue;
+                            System.out.println("Yes");
+                        }
                         fontSizeRestore();
                         conditionForOperator=2;
                         PrintMethod(-1,ValueSubtraction);
@@ -514,7 +571,18 @@ public class MainDesignController implements Initializable
         {
             output.setText("");
             userValue.setText("");
-            //PO1=""; PO2="";
+            if(actionEventForCB.getSource()==subtraction)
+            {
+                System.out.println("subtraction  Else Login 1");
+                if(userValue.getText().isEmpty() ||  getLastValue(userValue.getText()) == '-' )
+                {
+                    fontSizeRestore();
+                    conditionForOperator=2;
+                    PrintMethod(-1,"0-");
+                }
+                return;
+
+            }
         }
 
 
@@ -718,6 +786,7 @@ public class MainDesignController implements Initializable
             userValue.setText("");
             output.setText("");
             SplitString="";
+            lastValue='A';
             new FadeIn(ac).play();
             return;
         }
@@ -791,6 +860,11 @@ public class MainDesignController implements Initializable
                 }
                 else if(keyEvent.getCode().toString().equals("SUBTRACT"))
                 {
+                    if(StoreCalculationValue==0)
+                    {
+                        BeforeCalValue=StoreCalculationValue;
+                        System.out.println("Yes line 850+");
+                    }
                     fontSizeRestore();
                     conditionForOperator=2;
                     PrintMethod(-1,ValueSubtraction);
@@ -863,6 +937,11 @@ public class MainDesignController implements Initializable
                     }
                     else if(keyEvent.getCode().toString().equals("SUBTRACT"))
                     {
+                        if(StoreCalculationValue==0)
+                        {
+                            BeforeCalValue=StoreCalculationValue;
+                            System.out.println("Yes");
+                        }
                         fontSizeRestore();
                         conditionForOperator=2;
                         PrintMethod(-1,ValueSubtraction);
@@ -896,7 +975,18 @@ public class MainDesignController implements Initializable
         {
             output.setText("");
             userValue.setText("");
-            //PO1=""; PO2="";
+            if(keyEvent.getCode().toString().equals("SUBTRACT"))
+            {
+                System.out.println("subtraction  Else Login 1");
+                if(userValue.getText().isEmpty() ||  getLastValue(userValue.getText()) == '-' )
+                {
+                    fontSizeRestore();
+                    conditionForOperator=2;
+                    PrintMethod(-1,"0-");
+                }
+                return;
+
+            }
         }
 
 
@@ -908,6 +998,7 @@ public class MainDesignController implements Initializable
         output.setText(String.valueOf(StoreCalculationValue));
         if(valueI!=-1)
         {
+            System.out.println("Sub 1111111111111111111111111111111");
             String ValueConvertToS;
             ValueConvertToS=Integer.toString(valueI);
             if(userValue.getText().isEmpty())
@@ -920,10 +1011,10 @@ public class MainDesignController implements Initializable
                 userValue.setText(getTextUserValue+ValueConvertToS);
             }
 
-
         }
         else
         {
+            System.out.println("Sub 222222222222222222222222222222");
             if(userValue.getText().isEmpty())
             {
                 userValue.setText(valueS);
@@ -952,6 +1043,11 @@ public class MainDesignController implements Initializable
         double splitPartOne= Double.parseDouble(SplitString);
 
         AfterCalValue=splitPartOne; //Split Done Now Store After Value...
+
+        if(output.equals("0.00")){
+            BeforeCalValue=0;
+            AfterCalValue=0;
+        }
 
         if(conditionForOperator==1)
         {
@@ -1031,11 +1127,15 @@ public class MainDesignController implements Initializable
     {
         if(!PO2.equals("Don't have any Previous Output") || !PO1.equals("Don't have any Previous Output"))
         {
-            System.out.println("Cooooollllllll");
-            output.setText("");
-            userValue.setText("");
-            PO1="Don't have any Previous Output";
-            PO2="Don't have any Previous Output";
+            if(userValue.equals("0-"))
+            {
+                System.out.println("Cooooollllllll 222 line 1050+");
+                output.setText("");
+                userValue.setText("");
+                PO1="Don't have any Previous Output";
+                PO2="Don't have any Previous Output";
+            }
+
         }
     }//CheckPO
 
@@ -1045,7 +1145,7 @@ public class MainDesignController implements Initializable
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../FXML/LoginANDSignDesign.fxml")));
             Scene scene=new Scene(root);
-            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("../CSS/TotalCSSDesign.css")).toExternalForm());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("../CSS/LoginANDSignCSS.css")).toExternalForm());
             stage.setScene(scene);
             new FadeIn(root).play(); //FadeIn,
             stage.show();
@@ -1132,62 +1232,130 @@ public class MainDesignController implements Initializable
         }
         else if(event_CBC.getSource()==firstCheckBox)
         {
+            leftOrRight=true;
+            firstCheckBox.setSelected(true);
+            SecondCheckBox.setSelected(false);
+            firstCheckBox.setStyle("-fx-text-fill: #ff6600;");
+            SecondCheckBox.setStyle("-fx-text-fill: #0a0a0a;");
+            if(!(leftComboBox.getSelectionModel().getSelectedItem() ==null) || !(RightComboBox.getSelectionModel().getSelectedItem() ==null)){
+                TemperatureCalculation(convertInput.getText());
+            }
+        }
+        else if(event_CBC.getSource()==SecondCheckBox)
+        {
+            leftOrRight=false;
+            SecondCheckBox.setSelected(true);
+            firstCheckBox.setSelected(false);
+            firstCheckBox.setStyle("-fx-text-fill: #0a0a0a;");
+            SecondCheckBox.setStyle("-fx-text-fill: #ff6600;");
+            if(!(leftComboBox.getSelectionModel().getSelectedItem() ==null) || !(RightComboBox.getSelectionModel().getSelectedItem() ==null)){
+                TemperatureCalculation(convertInput.getText());
+            }
+        }
+        ////////////////////////////////////////////////
+        else if(event_CBC.getSource()==converterACButton)
+        {
+            convertInput.clear();
+            ConvertDisplay.setText("");
+            leftOrRight=true;
             firstCheckBox.setSelected(true);
             SecondCheckBox.setSelected(false);
             firstCheckBox.setStyle("-fx-text-fill: #ff6600;");
             SecondCheckBox.setStyle("-fx-text-fill: #0a0a0a;");
         }
-        else if(event_CBC.getSource()==SecondCheckBox)
+        else if(event_CBC.getSource()==converterButton)
         {
-            SecondCheckBox.setSelected(true);
-            firstCheckBox.setSelected(false);
-            firstCheckBox.setStyle("-fx-text-fill: #0a0a0a;");
-            SecondCheckBox.setStyle("-fx-text-fill: #ff6600;");
+            if(leftComboBox.getSelectionModel().getSelectedItem()==null || RightComboBox.getSelectionModel().getSelectedItem()==null){
+                Notifications noti= Notifications.create();
+                noti.title("Warning");
+                noti.text("Please Select Item Properly !!!");
+                noti.showWarning();
+                noti.hideAfter(Duration.millis(2000));
+            }else{
+                TemperatureCalculation(convertInput.getText());
+            }
 
         }
-//        ////////////////////////////////////////////////
-//        else if(event_CBC.getSource()==converterACButton)
-//        {
-//
-//        }
-//        else if(event_CBC.getSource()==converterButton)
-//        {
-//
-//        }
-//        else if(event_CBC.getSource()==converterCLRButton)
-//        {
-//
-//        }
+        else if(event_CBC.getSource()==converterCLRButton)
+        {
+            if(convertInput.getText().length()==0 || convertInput.getText().length()==1) {
+                convertInput.clear();
+                return;
+            }
+            else
+            { String RemoveValue=removeLastChar(convertInput.getText());  convertInput.setText(RemoveValue); }
+        }
 
     }//ConverterButtonActionEvent
 
 
     void CategoryWiseChange(String category, ObservableList<String> categoryList)
     {
-        //Flip,
+        GlobalCategoryList=categoryList;
         new Flip(singlePaneFor9Item).play();
         titleConverter.setText(category+" Converter");
         leftComboBox.setItems(categoryList);
         RightComboBox.setItems(categoryList);
         leftComboBox.setPromptText(categoryList.get(0));
         RightComboBox.setPromptText(categoryList.get(0));
+        firstCheckBox.setText(categoryList.get(0)+" to "+categoryList.get(0));
+        SecondCheckBox.setText(categoryList.get(0)+" to "+categoryList.get(0));
     }//CategoryWiseChange
 
     void CheckBoXSelect()
     {
-        String leftComboValue,RightComboValue;
         leftComboValue=leftComboBox.getSelectionModel().getSelectedItem();
         RightComboValue=RightComboBox.getSelectionModel().getSelectedItem();
-        if(leftComboValue==null || RightComboValue==null)
+        if(leftComboValue==null)
         {
-            System.out.println("Cool: "+leftComboBox.getItems());
-        }else
+            firstCheckBox.setText(GlobalCategoryList.get(0)+" to "+RightComboValue);
+            SecondCheckBox.setText(RightComboValue+" to "+GlobalCategoryList.get(0));
+        }
+        else if(RightComboValue==null)
+        {
+            firstCheckBox.setText(leftComboValue+" to "+GlobalCategoryList.get(0));
+            SecondCheckBox.setText(GlobalCategoryList.get(0)+" to "+leftComboValue);
+        }
+        else
         {
             firstCheckBox.setText(leftComboValue+" to "+RightComboValue);
             SecondCheckBox.setText(RightComboValue+" to "+leftComboValue);
         }
 
+
     }//CheckBoXSelect
+    //"Celsius","Fahrenheit","Kelvin")
+    void TemperatureCalculation(String ConvertValue){
+        double ans;double ConvertDouble=Double.parseDouble(ConvertValue);
+        if(leftComboValue.equals(RightComboValue)){
+            ConvertDisplay.setText("Ans: "+ConvertValue);
+        }
+        else if(leftComboValue.equals("Celsius") && RightComboValue.equals("Fahrenheit")  ||  leftComboValue.equals("Fahrenheit") && RightComboValue.equals("Celsius")){
+            if(leftOrRight){ //Celsius to Fahrenheit
+                ans=((ConvertDouble - 32) * 5/9);
+                ConvertDisplay.setText("Ans: "+ans);
+            }
+            else{ //Fahrenheit to Celsius
+                ans=((ConvertDouble * 9/5) + 32);
+                ConvertDisplay.setText("Ans: "+ans);
+            }
+        }
+        else if(leftComboValue.equals("Celsius") && RightComboValue.equals("Kelvin")  ||  leftComboValue.equals("Kelvin") && RightComboValue.equals("Celsius")){
+            if(leftOrRight){ //Celsius to Kelvin
+                ans=ConvertDouble - 273.15;
+                ConvertDisplay.setText("Ans: "+ans);
+            }
+            else{ //Kelvin to Celsius
+                ans=ConvertDouble + 273.15;
+                ConvertDisplay.setText("Ans: "+ans);
+            }
+        }
+
+
+    }
+
+
+
 
 
 
@@ -1218,16 +1386,6 @@ public class MainDesignController implements Initializable
         mouseY=event.getSceneY();
         //System.out.println("mouseX:"+mouseX+"   "+"mouseY:"+mouseY);
     }
-
-
-
-
-
-
-
-
-
-
 
 
 

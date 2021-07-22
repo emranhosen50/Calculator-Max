@@ -53,33 +53,6 @@
 }
 
 
-#SignUpButtonInPane,#SignInButtonInPane
-{
-    -fx-border-width:1.5px;
-    -fx-border-style:solid;
-    -fx-border-color:#FFFFFF;
-    -fx-background-color : #FF6600;
-    -fx-border-radius:50px;
-    -fx-moz-border-radius:50px;
-    -fx-webkit-border-radius:50px;
-}
-
-/*Forgot Password Effect*/
-#forgotPassLabel
-{
-    -fx-text-fill: #535353;
-}
-#forgotPassLabel:hover
-{
-    -fx-text-fill: #CB331B;
-    -fx-font-weight:bold;
-}
-#forgotPassLabel:pressed
-{
-    -fx-text-fill: #AC2E1A;
-    -fx-font-weight:bold;
-}
-/*Forgot Password Effect*/
 
 /*TitleBar Close & Min*/
 #close
@@ -102,8 +75,8 @@
 {
     -fx-text-fill: #179B7B;
 }
-
 /*TitleBar Close & Min*/
+
 
 
 
@@ -124,7 +97,3 @@
 -fx-background-color : #8A2314;
 }
 
-.button:focused
-{
--fx-background-color : #A52916;
-}
