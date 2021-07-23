@@ -1350,6 +1350,16 @@ public class MainDesignController implements Initializable
                 ConvertDisplay.setText("Ans: "+ans);
             }
         }
+        else if(leftComboValue.equals("Kelvin") && RightComboValue.equals("Fahrenheit ")  ||  leftComboValue.equals("Fahrenheit") && RightComboValue.equals("Kelvin ")){
+            if(leftOrRight){
+                ans= ((ConvertDouble - 273.15) * 9/5 + 32);
+                ConvertDisplay.setText("Ans: "+ans);
+            }
+            else{
+                ans= ((ConvertDouble - 32) * 5/9 + 273.15);
+                ConvertDisplay.setText("Ans: "+ans);
+            }
+        }
 
 
     }
