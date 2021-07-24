@@ -79,8 +79,7 @@
 
 
 
-
-.button
+#menu
 {
     -fx-font-size:13px;
     -fx-text-fill:#ffffff;
@@ -88,12 +87,13 @@
     -fx-font-weight:bold;
     -fx-background-color: #1B3237;
 }
-.button:hover
+#menu:hover
 {
 -fx-background-color : #CB331B;
 }
-.button:pressed
+#menu:pressed
 {
 -fx-background-color : #8A2314;
 }
+
 

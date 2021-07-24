@@ -2,6 +2,7 @@ package Controller;
 
 import MainClass.ConnectMySQL;
 import animatefx.animation.*;
+import com.jfoenix.controls.JFXButton;
 import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -38,8 +39,11 @@ public class MainDesignController implements Initializable
     @FXML
     Pane CalculatorPane, ConverterPane, MortgagePane;
 
+//    @FXML
+//    Button CalculatorButton,ConverterButton,MortgageButton;
+
     @FXML
-    Button CalculatorButton,ConverterButton,MortgageButton;
+    JFXButton CalculatorButton,ConverterButton,MortgageButton,logOut,About;
 
     @FXML
     Button one,two,three,four,five,six,seven,eight,nine,zero,zero_zero,full_stop,multi,plus,subtraction,equal,slash,percent,x,ac;
@@ -61,7 +65,7 @@ public class MainDesignController implements Initializable
     Label titleConverter,ConvertDisplay;
 
     @FXML
-    Pane singlePaneFor9Item;
+    Pane singlePaneFor9Item,animationADD_pane;
 
     @FXML
     ComboBox<String> leftComboBox,RightComboBox;
@@ -109,8 +113,6 @@ public class MainDesignController implements Initializable
     double mouseX,mouseY;
     @FXML
     Label close,minimize,TitleText;
-    @FXML
-    Button logOut,About;
 
     @FXML
     private Button menu;
@@ -122,10 +124,16 @@ public class MainDesignController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Con.createConnection();
+
         TitleText.setText("Max Calculator");
         CalculatorPane.toFront();
         fontSizeRestore();
         drawerAction();
+
+        //CalculatorButton,ConverterButton,MortgageButton
+//        CalculatorButton.setStyle("-fx-background-color : rgba(25, 45, 50, 1.0);");
+//        ConverterButton.setStyle("-fx-background-color : rgba(76, 175, 80, 0.0);");
+//        MortgageButton.setStyle("-fx-background-color : rgba(76, 175, 80, 0.0);");
 
 
         ////////////////////////////////
@@ -141,6 +149,8 @@ public class MainDesignController implements Initializable
 
         firstCheckBox.setSelected(true);
         firstCheckBox.setStyle("-fx-text-fill: #ff6600;");
+
+        animationTow(-155); //Initial Button Animation..
 
     }
     private void drawerAction() {
@@ -158,6 +168,17 @@ public class MainDesignController implements Initializable
         });
     }
 
+    void animationTow(int value)
+    {
+        TranslateTransition transition =new TranslateTransition();
+        transition.setDuration(Duration.millis(300));
+        transition.setNode(animationADD_pane);
+
+        transition.setToY(value);
+        //transition.setByX(-50);
+
+        transition.play();
+    }
 
     public void ActionEvent(ActionEvent actionEvent)
     {
@@ -169,6 +190,13 @@ public class MainDesignController implements Initializable
             new Shake(totalCalculatorView).play();
             TitleText.setText("Max Calculator");
 
+            //Animation 2
+            animationTow(-155);
+
+//            CalculatorButton.setStyle("-fx-background-color : rgba(25, 45, 50, 1.0);");
+//            ConverterButton.setStyle("-fx-background-color : rgba(76, 175, 80, 0.0);");
+//            new SlideInDown(ConverterButton).play();
+
         }
         else if(actionEvent.getSource()==ConverterButton)
         {
@@ -177,6 +205,14 @@ public class MainDesignController implements Initializable
             MortgagePane.toBack();
             TitleText.setText("Converter");
             AnimationEffect(currencyButton,lengthButton,areaButton,volumeButton,speedButton,timeButton,massButton,numeralButton,temperatureButton);
+
+            animationTow(-101);
+
+
+//            new SlideInUp(CalculatorButton).play();
+//            ConverterButton.setStyle("-fx-background-color : rgba(25, 45, 50, 1.0);");
+//            CalculatorButton.setStyle("-fx-background-color : rgba(76, 175, 80, 0.0);");
+
         }
         else if(actionEvent.getSource()==MortgageButton)
         {
@@ -185,10 +221,17 @@ public class MainDesignController implements Initializable
             CalculatorPane.toBack();
             TitleText.setText("Mortgage");
 
+            animationTow(-51);
+
         }
         else if(actionEvent.getSource()==logOut)
         {
+            animationTow(51);
             LogOutMethod(actionEvent);
+        }
+        else if(actionEvent.getSource()==About)
+        {
+            animationTow(125);
         }
     }//ActionEvent
 
