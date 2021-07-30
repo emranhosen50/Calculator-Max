@@ -22,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
@@ -29,6 +30,9 @@ import org.controlsfx.control.Notifications;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Formatter;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -37,7 +41,7 @@ import java.util.ResourceBundle;
 public class MainDesignController implements Initializable
 {
     @FXML
-    Pane CalculatorPane, ConverterPane, MortgagePane;
+    Pane CalculatorPane, ConverterPane, MortgagePane,AboutPane;
 
 //    @FXML
 //    Button CalculatorButton,ConverterButton,MortgageButton;
@@ -72,6 +76,8 @@ public class MainDesignController implements Initializable
 
     @FXML
     CheckBox firstCheckBox,SecondCheckBox;
+
+    public Text adminText;
 
 
     int ValueOne=1,ValueTwo=2,ValueThree=3,ValueFour=4,ValueFive=5,ValueSix=6,ValueSeven=7,ValueEight=8,ValueNine=9,ValueZero=0;
@@ -124,7 +130,7 @@ public class MainDesignController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Con.createConnection();
-
+        AdminPresentOrNot();
         TitleText.setText("Max Calculator");
         CalculatorPane.toFront();
         fontSizeRestore();
@@ -203,6 +209,7 @@ public class MainDesignController implements Initializable
             ConverterPane.toFront();
             CalculatorPane.toBack();
             MortgagePane.toBack();
+            AboutPane.toBack();
             TitleText.setText("Converter");
             AnimationEffect(currencyButton,lengthButton,areaButton,volumeButton,speedButton,timeButton,massButton,numeralButton,temperatureButton);
 
@@ -219,6 +226,7 @@ public class MainDesignController implements Initializable
             MortgagePane.toFront();
             ConverterPane.toBack();
             CalculatorPane.toBack();
+            AboutPane.toBack();
             TitleText.setText("Mortgage");
 
             animationTow(-51);
@@ -231,6 +239,11 @@ public class MainDesignController implements Initializable
         }
         else if(actionEvent.getSource()==About)
         {
+            AboutPane.toFront();
+            MortgagePane.toFront();
+            ConverterPane.toBack();
+            CalculatorPane.toBack();
+            TitleText.setText("About");
             animationTow(125);
         }
     }//ActionEvent
@@ -1210,6 +1223,31 @@ public class MainDesignController implements Initializable
 
     }
 
+    private boolean AdminPresentOrNot()
+    {
+        String DBEmail;
+        try {
+            Statement stmt= Con.con.createStatement();
+            ResultSet rs =stmt.executeQuery("SELECT * FROM login_info;");
+            while(rs.next())
+            {
+                DBEmail = rs.getString("Email");
+                if(DBEmail.equals("emranhosen50")){
+                    adminText.setText("Admin Emran");
+                    return true;
+                }else{
+                    adminText.setText(DBEmail);
+                }
+                System.out.println(DBEmail);
+            }
+            stmt.close();
+
+        }catch (SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+        return false;
+    }
 
     /////////////////////////////////////////////////////////........Converter...........//////////////////////////////////////////////////////////////////////////
     public void KeyTypeAction(KeyEvent keyTypeAction)
