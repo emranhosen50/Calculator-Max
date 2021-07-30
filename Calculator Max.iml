@@ -23,11 +23,10 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="lib" level="project" />
-    <orderEntry type="library" name="AnimateFX-1.2.1" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.20" level="project" />
-    <orderEntry type="library" name="jfoenix-9.0.10" level="project" />
-    <orderEntry type="library" name="controlsfx-11.1.0" level="project" />
     <orderEntry type="library" name="TrayTester" level="project" />
+    <orderEntry type="library" name="AnimateFX-1.2.1" level="project" />
+    <orderEntry type="library" name="controlsfx-8.40.12" level="project" />
+    <orderEntry type="library" name="jfoenix-8.0.3" level="project" />
   </component>
 </module>

@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -20,29 +21,41 @@ public class Main extends Application {
 
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        boolean condition=true;
-        Con.createConnection();
-        condition=CheckUserAlreadyLoginORNot();
+    public void start(Stage primaryStage) {
 
-        System.out.println(condition);
+        try {
 
-        if(condition)
-        {
-            primaryStage.initStyle(StageStyle.UNDECORATED);
-            FXMLLoader loader =new FXMLLoader(getClass().getResource("../FXML/LoginANDSignDesign.fxml"));
-            //FXMLLoader loader =new FXMLLoader(getClass().getResource("../FXML/MainDesign.fxml"));
-            Parent root =loader.load();
-            primaryStage.setTitle("Calculator Max");
-            Scene scene=new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("../CSS/LoginANDSignCSS.css").toExternalForm());
-            primaryStage.setScene(scene);
-            primaryStage.show();
+            //primaryStage.getIcons().add(new Image("../Images/profile.png"));
+            primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("../Images/max_calculator_logo.png")));
+            System.out.println("Yo");
+
+            boolean condition=true;
+            Con.createConnection();
+            condition=CheckUserAlreadyLoginORNot();
+
+            System.out.println(condition);
+
+            if(condition)
+            {
+                primaryStage.initStyle(StageStyle.UNDECORATED);
+                FXMLLoader loader =new FXMLLoader(getClass().getResource("../FXML/LoginANDSignDesign.fxml"));
+                //FXMLLoader loader =new FXMLLoader(getClass().getResource("../FXML/MainDesign.fxml"));
+                Parent root =loader.load();
+                primaryStage.setTitle("Calculator Max");
+                Scene scene=new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("../CSS/LoginANDSignCSS.css").toExternalForm());
+                primaryStage.setScene(scene);
+                primaryStage.show();
+            }
+            else
+            {
+                LoginSuccessful(primaryStage);
+            }
+
+        }catch (Exception e) {
+            e.printStackTrace();
         }
-        else
-        {
-            LoginSuccessful(primaryStage);
-        }
+
 
 
         //MainDesignController mainDesignController= loader.getController(); /// before Open.....
