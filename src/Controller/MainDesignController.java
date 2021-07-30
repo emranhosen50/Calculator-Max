@@ -240,7 +240,7 @@ public class MainDesignController implements Initializable
         else if(actionEvent.getSource()==About)
         {
             AboutPane.toFront();
-            MortgagePane.toFront();
+            MortgagePane.toBack();
             ConverterPane.toBack();
             CalculatorPane.toBack();
             TitleText.setText("About");

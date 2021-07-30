@@ -339,7 +339,6 @@
                      </font>
                   </Text>
                </children></Pane>
-            <Pane fx:id="AboutPane" layoutX="-28.0" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="-28.0" />
             <Pane fx:id="ConverterPane" layoutX="-28.0" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: #fcfcfc; -fx-background-color: #fcfcfc;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-28.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <GridPane layoutX="29.0" layoutY="197.0" prefHeight="267.0" prefWidth="419.0">
@@ -538,6 +537,15 @@
                   <ImageView fitHeight="480.0" fitWidth="895.0" layoutX="58.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/under_dev.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="AboutPane" layoutX="-28.0" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="-28.0">
+               <children>
+                  <ImageView fitHeight="600.0" fitWidth="910.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/about.png" />
                      </image>
                   </ImageView>
                </children>
